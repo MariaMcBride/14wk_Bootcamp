@@ -1,0 +1,38 @@
+* {
+  font-family: cursive;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 10px 5px;
+}
+
+h1 {
+  background-color: black;
+  color: white;
+  margin: 10px 5px;
+  padding: 0 0 5px 15px;
+}
+
+.cloudcolor {
+  color: turquoise;
+}
+
+h2 {
+  background-color: rgb(102, 51, 153);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-style: italic;
+  font-weight: lighter;
+  margin: 10px 5px;
+  padding: 0 0 5px 0;
+}
+
+h3 {
+  background-color: #9fc5f8;
+  text-align: right;
+  text-decoration: underline;
+  font-weight: lighter;
+  margin: 10px 5px;
+  padding: 0 15px 5px 0;
+}
