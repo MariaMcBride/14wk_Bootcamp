@@ -6,37 +6,42 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 .top-nav {
   height: 218px;
   width: 1375px;
   background-color: green;
   margin: 30px 30px 28px;
 }
+
 .side-nav {
   height: 438px;
   width: 292px;
   background-color: blue;
   margin-right: 34px;
 }
+
 .main {
   height: 610px;
   width: 1042px;
   background-color: red;
 }
+
 .sub-content {
   height: 288px;
   width: 303px;
   background-color: yellow;
   display: inline-flex;
   margin: 23px 27px 13px -7px;
-  justify-content: left;
 }
+
 #advertisement {
   height: 173px;
   width: 952px;
   background-color: purple;
   margin: 0 30px 30px 23px;
 }
+
 .row {
   display: inline-flex;
   margin: 0px 30px 30px;
