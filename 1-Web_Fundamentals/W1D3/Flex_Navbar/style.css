@@ -72,6 +72,8 @@ a:hover {
 .search-button img {
   height: 20px;
   object-fit: cover;
+  position: fixed;
+  top: 40px;
 }
 
 .btn {
