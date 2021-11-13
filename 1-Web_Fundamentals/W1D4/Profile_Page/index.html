@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav flex justify">
+        <div class="nav-header flex justify">
+          <img src="purpleskycat.png" class="logo" alt="purple sky cat" />
+          <h1>Profile</h1>
+          <ul class="nav-links flex justify">
+            <li><a href="#">Home</a></li>
+            <li>
+              <span class="bold-link"><a href="#">My Profile</a></span>
+            </li>
+            <li><a href="#">Find Connections</a></li>
+          </ul>
+          <div class="search-bar flex">
+            <form action="/made_up_server.php" method="GET" class="search-form">
+              <!-- <button type="submit" class="search-button">
+                <img src="search2.png" alt="search bar magnifying glass" />
+              </button> -->
+              <input type="text" placeholder="Search" />
+            </form>
+          </div>
+        </div>
+        <div>
+          <button class="btn flex justify">Sign Out</button>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="col-1">
+          <div class="user-card">
+            <div class="card-header">
+              <img src="profile.png" class="avatar" alt="profile pic" />
+            </div>
+            <div class="card-body">
+              <h1>Maria McBride</h1>
+              <h3 class="flex">
+                <img src="whitepin.png" class="icons" alt="map pin" /> Friday
+                Harbor, Washington
+              </h3>
+              <p>Developer | Engineer | Overthinker</p>
+              <p>Master of making things look pretty-ish!</p>
+              <a href="#" class="flex"
+                ><img
+                  src="purplegear.png"
+                  class="icons gear"
+                  alt="gear icon"
+                /><img
+                  src="whitegear.png"
+                  class="icons gear-swap"
+                  alt="gear icon"
+                />edit profile</a
+              >
+            </div>
+          </div>
+          <div class="edu">
+            <div class="edu-header flex">
+              <h2>Education</h2>
+            </div>
+            <div class="edu-body">
+              <h3>
+                Coding Dojo
+                <span class="middot">&#183;</span> Full Stack Bootcamp
+              </h3>
+              <p class="date">
+                Nov 2021 - Mar 2022
+                <span class="middot">&#183;</span> 4 mos
+              </p>
+              <p>Triple black belt in JavaScript, Python, and MERN</p>
+              <h3>
+                Whatcom Community College
+                <span class="middot">&#183;</span> English Literature
+              </h3>
+              <p class="date">
+                2017 - 2019
+                <span class="middot">&#183;</span> 2 yrs
+              </p>
+              <h3>North Hollywood High School</h3>
+              <p class="date">
+                2004 - 2008 <span class="middot">&#183;</span> 4 yrs
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="connections">
+            <div class="connection-header">
+              <h2><span>2</span>Connection Requests</h2>
+            </div>
+            <div class="req-body">
+              <div class="reqs flex">
+                <div class="flex">
+                  <a href="#" class="flex"
+                    ><img src="todd-s.jpg" class="avatar-2" alt="Todd E" /> Todd
+                    E</a
+                  >
+                </div>
+                <div class="pending flex justify">
+                  <a href="#"><img src="greencheck.png" alt="approve" /></a>
+                  <a href="#"><img src="redx.png" alt="deny" /></a>
+                </div>
+              </div>
+              <div class="reqs flex">
+                <div class="flex">
+                  <a href="#" class="flex"
+                    ><img src="phil-s.jpg" class="avatar-2" alt="Phil K" /> Phil
+                    K</a
+                  >
+                </div>
+                <div class="pending flex justify">
+                  <a href="#"><img src="greencheck.png" alt="approve" /></a>
+                  <a href="#"><img src="redx.png" alt="deny" /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="connections">
+            <div class="connection-header">
+              <h2><span>1000+</span>Your Connections</h2>
+            </div>
+            <div class="friend-body">
+              <div class="friends flex">
+                <a href="#" class="flex">
+                  <img src="adrien-s.jpg" class="avatar-2" alt="Adrien D" />
+                  Adrien D
+                </a>
+              </div>
+              <div class="friends flex">
+                <a href="#" class="flex"
+                  ><img src="anne-s.jpg" class="avatar-2" alt="Anne J" /> Anne
+                  J</a
+                >
+              </div>
+              <div class="friends flex">
+                <a href="#" class="flex">
+                  <img src="alayne-s.jpg" class="avatar-2" alt="Alayne T" />
+                  Alayne T
+                </a>
+              </div>
+              <div class="friends flex">
+                <a href="#" class="flex"
+                  ><img src="arry-s.jpg" class="avatar-2" alt="Arry Y" /> Arry
+                  Y</a
+                >
+              </div>
+              <div class="view-link flex">
+                <a href="#">View More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
