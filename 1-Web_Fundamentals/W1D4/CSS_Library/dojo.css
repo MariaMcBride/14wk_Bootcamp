@@ -1,0 +1,152 @@
+/* CSS reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fixed width container class that will "auto-center" itself */
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  /* cursor: url(customarrow.png), auto; <-- if you want to add custom cursor */
+}
+
+/* Create account button from button-up assignment */
+.btn {
+  background: #2b78e4;
+  border: 2px solid black;
+  color: white;
+  font-size: 16px;
+  width: 175px;
+  padding: 7px;
+  box-shadow: 4px 4px 1px black;
+}
+
+.btn {
+  /* my custom button from Flex Navbar/Profile Page */
+  background-color: rgb(125, 87, 204, 0.75);
+  border: 2px solid darkgray;
+  border-radius: 10px;
+  box-shadow: 4px 4px 2px 1px black;
+  cursor: url(custompointer.png), auto;
+  width: 100px;
+  height: 50px;
+  margin: 0 17px 0 0;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  transition: all 150ms ease-in-out;
+}
+
+/* From FLEX-ible columns assignment */
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  background-color: #639da0;
+}
+
+/* .navbar classes from Flex Navbar/Profile Page assignment */
+.nav {
+  /* nav container */
+  height: 100px;
+  background-color: rgb(32, 34, 42);
+  color: rgb(236, 236, 236);
+}
+
+.logo {
+  /* image logo */
+  height: 75px;
+  margin-right: 20px;
+}
+
+.nav-links {
+  margin: 40px;
+}
+
+li {
+  list-style: none;
+  margin: 20px;
+}
+
+li > a {
+  /* all anchor tags within a list element */
+  text-decoration: none;
+  color: rgb(236, 236, 236);
+}
+
+.bold-link a {
+  /* make only one link in the link list different */
+  text-decoration: none;
+  color: rgb(236, 236, 236);
+  font-weight: bold;
+}
+
+a:hover {
+  cursor: url(custompointer.png), auto;
+  color: rgb(125, 87, 204);
+  transition: all 150ms ease-in-out;
+}
+
+/* Search bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.search-bar input[type="text"] {
+  background-color: rgb(0, 0, 0, 0.5);
+  border: 2px solid darkgray;
+  border-radius: 25px;
+  width: 200px;
+  height: 15px;
+  padding: 10px 40px 10px 15px;
+  color: rgb(231, 229, 229);
+  font-size: inherit;
+}
+
+.search-button {
+  background: transparent;
+  border: none;
+  margin-left: -33px;
+}
+
+.search-button img {
+  height: 20px;
+  object-fit: cover;
+  position: fixed;
+  top: 40px;
+}
+
+/* CSS image link change on hover */
+/* <a href="#">
+    <img class="original" src="edit-original.png"/>
+    <img class="swap" src="edit-hover.png"/>
+    <span>Edit Profile</span>
+</a> */
+
+/* Have two images and hide the hover on default and show hover/hide original image when hovering */
+a img.swap {
+  display: none;
+}
+a img.original {
+  display: inherit;
+}
+a:hover img.swap {
+  display: inherit;
+}
+a:hover img.original {
+  display: none;
+}
+
+/* <h3>Title<span class="middot">&#183;</span> Descriptor</h3> */
+/* flex/align/justify each element with a child you're trying to manipulate */
+/* Image overlapping header: set a width and height for image, make the height of the header shorter than the image then adjust the bottom margin of the header to push the rest of the contents below down */
