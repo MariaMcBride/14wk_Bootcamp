@@ -83,6 +83,15 @@ function factorial() {
 
 factorial();
 //
+function factorial(arr) {
+  var sum = 1;
+  for (var i = 0; i < arr.length; i++) {
+    sum = sum * arr[i];
+  }
+  return sum;
+}
+console.log(factorial([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]));
+//
 function factorial(lowNum, highNum) {
   var product = lowNum;
   var sequence = lowNum + " * ";
