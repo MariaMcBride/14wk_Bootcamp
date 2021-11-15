@@ -32,15 +32,17 @@ while (i >= 0) {
 
 // 3. Print the sequence: Using a loop write code that will console.log the values in this sequence 4, 2.5, 1, -0.5, -2, -3.5.
 
-var arr = [4, 2.5, 1, -0.5, -2, -3.5];
-for (var i = 0; i < arr.length; i++) {
-  console.log(arr[i]);
+var value = 5.5;
+for (var i = 0; i <= 5; i++) {
+  value -= 1.5;
+  console.log(value);
 }
 //
-var arr = [4, 2.5, 1, -0.5, -2, -3.5];
+var value = 5.5;
 var i = 0;
-while (i < arr.length) {
-  console.log(arr[i]);
+while (i <= 5) {
+  value -= 1.5;
+  console.log(value);
   i++;
 }
 

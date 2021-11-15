@@ -2,7 +2,7 @@
 
 function d6() {
   var roll = Math.random();
-  // your code here
+  roll = Math.floor(Math.random() * 6) + 1; // your code here
   return roll;
 }
 
@@ -33,3 +33,33 @@ var lifesAnswers = [
   "Outlook not so good.",
   "Very doubtful.",
 ];
+
+function response(arr) {
+  randomAnswer = Math.floor(Math.random() * arr.length);
+  console.log(arr[randomAnswer]);
+}
+response(lifesAnswers);
+
+// Create a function that takes in an array
+// Create a variable to represent the answer and set it to Math.random() multiplied by the length of the array
+// Add Math.floor to Math.random formula (+1 is only added to the end if it has to start at 1 but with an array, it has to start at 0)
+// Print the current value of the array and call the function
+
+var lifesAnswers = ["yes", "no", "maybe", "kinda sorta"];
+var lifesOtherAnswers = ["um", "okay", "I guess"];
+
+function oracle(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+var result1 = oracle(lifesAnswers);
+console.log(result1);
+var result2 = oracle(lifesOtherAnswers);
+console.log(result2);
+
+// Given two separate arrays, create a function that takes in an array
+// Return value of the array with Math.floor(Math.random() * arr.length)
+// Create variable result1 and set to call function with first set of array
+// Print result1
+// Create variable result2 and set to call function with second set of array
+// Print result2

@@ -10,3 +10,19 @@ function reverseArray(arr) {
 }
 
 console.log(reverseArray(["a", "b", "c", "d", "e"]));
+
+//
+
+function reverse(arr) {
+  var i = 0;
+  while (i < (arr.length - 1) / 2) {
+    var temp = arr[arr.length - 1 - i];
+    var current = arr[i];
+    arr[i] = temp;
+    arr[arr.length - 1 - i] = current;
+    i++;
+  }
+  console.log(arr);
+}
+var arr = ["a", "b", "c", "d", "e"];
+reverse(arr);
