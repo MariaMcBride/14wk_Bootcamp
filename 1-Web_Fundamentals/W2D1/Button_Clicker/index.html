@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dojonary</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav flex aligncenter justifybtwn">
+        <div class="nav-header flex aligncenter justifybtwn">
+          <h1>Dojonary</h1>
+          <div class="search-bar">
+            <form action="/made_up_server.php" method="GET" class="search-form">
+              <input type="text" placeholder="Search" class="border" />
+            </form>
+          </div>
+          <button
+            onclick="logout(this)"
+            class="btn flex aligncenter justifybtwn border box-shadow"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+      <div class="main-body flex justifycenter">
+        <div class="col-1">
+          <div class="word-box flex border">
+            <div class="word">
+              <h1>ninja</h1>
+              <em>noun</em>
+              <p>Plural: <em>ninjas</em></p>
+              <button class="likes border box-shadow" onclick="likedNinja()">
+                13 likes
+              </button>
+            </div>
+            <div class="definition flex aligncenter">
+              <p>
+                A practitioner skilled in the <a href="#">Japanese</a> art of
+                <a href="#">ninjutsu</a>
+              </p>
+            </div>
+          </div>
+          <div class="word-box flex border">
+            <div class="word">
+              <h1>ninja</h1>
+              <em>noun</em>
+              <p>Plural: <em>ninjas</em></p>
+              <button class="likes border box-shadow" onclick="likedNinja()">
+                37 likes
+              </button>
+            </div>
+            <div class="definition flex aligncenter">
+              <p>
+                A <a href="#">programmer</a> who breaks down problems with
+                <a href="#">zen</a>-like focus
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="add-box border">
+            <p>Dojonary is defined by <strong>YOU</strong></p>
+            <button class="add-def border box-shadow" onclick="hide(this)">
+              Add Definition
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
