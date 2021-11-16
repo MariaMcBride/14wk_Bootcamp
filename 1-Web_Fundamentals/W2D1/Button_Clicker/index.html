@@ -9,34 +9,28 @@
   </head>
   <body>
     <div class="container">
-      <div class="nav flex aligncenter justifybtwn">
-        <div class="nav-header flex aligncenter justifybtwn">
-          <h1>Dojonary</h1>
-          <div class="search-bar">
-            <form action="/made_up_server.php" method="GET" class="search-form">
-              <input type="text" placeholder="Search" class="border" />
-            </form>
-          </div>
-          <button
-            onclick="logout(this)"
-            class="btn flex aligncenter justifybtwn border box-shadow"
-          >
-            Login
-          </button>
-        </div>
+      <div class="nav-header flex aligncenter justifybtwn">
+        <h1>Dojonary</h1>
+        <input type="text" placeholder="Search" class="search-bar border" />
+        <button
+          onclick="logout(this)"
+          class="btn flex aligncenter justifybtwn border box-shadow"
+        >
+          Login
+        </button>
       </div>
       <div class="main-body flex justifycenter">
         <div class="col-1">
           <div class="word-box flex border">
             <div class="word">
               <h1>ninja</h1>
-              <em>noun</em>
+              <p><em>noun</em></p>
               <p>Plural: <em>ninjas</em></p>
               <button class="likes border box-shadow" onclick="likedNinja()">
                 13 likes
               </button>
             </div>
-            <div class="definition flex aligncenter">
+            <div class="definition flex aligncenter justifybtwn">
               <p>
                 A practitioner skilled in the <a href="#">Japanese</a> art of
                 <a href="#">ninjutsu</a>
@@ -46,13 +40,13 @@
           <div class="word-box flex border">
             <div class="word">
               <h1>ninja</h1>
-              <em>noun</em>
+              <p><em>noun</em></p>
               <p>Plural: <em>ninjas</em></p>
               <button class="likes border box-shadow" onclick="likedNinja()">
                 37 likes
               </button>
             </div>
-            <div class="definition flex aligncenter">
+            <div class="definition flex aligncenter justifybtwn">
               <p>
                 A <a href="#">programmer</a> who breaks down problems with
                 <a href="#">zen</a>-like focus

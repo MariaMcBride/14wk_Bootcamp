@@ -1,6 +1,10 @@
 // Change Login to Logout when clicked
 function logout(element) {
-  element.innerText = "Logout";
+  if (element.innerText == "Login") {
+    element.innerText = "Logout";
+  } else {
+    element.innerText = "Login";
+  }
 }
 
 // Remove Add Definition when clicked
