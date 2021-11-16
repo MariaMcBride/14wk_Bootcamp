@@ -1,11 +1,19 @@
 console.log("page loaded...");
 
-var element = document.querySelector("video");
-element.addEventListener("mouseover", function () {
-  this.play();
-});
+function playVideo(vid) {
+  vid.play();
+}
 
-var element = document.querySelector("video");
-element.addEventListener("mouseout", function () {
-  this.pause();
-});
+function pauseVideo(vid) {
+  vid.pause();
+}
+
+// var element = document.querySelector("video");
+// element.addEventListener("mouseover", function () {
+//   this.play();
+// });
+
+// var element = document.querySelector("video");
+// element.addEventListener("mouseout", function () {
+//   this.pause();
+// });

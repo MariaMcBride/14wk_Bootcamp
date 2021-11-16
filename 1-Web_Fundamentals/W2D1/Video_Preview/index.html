@@ -27,9 +27,14 @@
       <!-- left column -->
       <div class="col-l">
         <!-- this is a placeholder replace it with a real video -->
-        <video width="706.67" height="594.31" controls muted>
-          <source src="cutecat.mp4" type="video/mp4" />
-        </video>
+        <video
+          src="cutecat.mp4"
+          type="video/mp4"
+          width="706.67"
+          muted
+          onmouseover="playVideo(this)"
+          onmouseout="pauseVideo(this)"
+        ></video>
         <!-- video info -->
         <div class="row">
           <div class="start">
