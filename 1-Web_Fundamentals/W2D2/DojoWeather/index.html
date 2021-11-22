@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- nav bar -->
+    <div class="top">
+      <div class="nav flex align justify">
+        <h1 class="nav-title">DojoWeather</h1>
+        <ul class="nav-links flex align">
+          <li><a href="" onclick="cityLoadAlert()">Burbank</a></li>
+          <li><a href="" onclick="cityLoadAlert()">Chicago</a></li>
+          <li><a href="" onclick="cityLoadAlert()">Dallas</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- body -->
+    <div class="container">
+      <div class="current-location flex align justify">
+        <h2>San Jose</h2>
+        <form action="/">
+          <label>show temperature in </label>
+          <select name="unit" id="unit" onchange="convertTemps(this)">
+            <option>°C</option>
+            <option>°F</option>
+          </select>
+        </form>
+      </div>
+      <div class="row flex align">
+        <div class="days">
+          <h3>Today</h3>
+          <img src="assets/some_rain.png" alt="rain" class="icon-m" />
+          <p>some rain</p>
+          <div class="temp-readings flex align justify">
+            <span class="hi-temp" id="temp1">24</span>
+            <span class="lo-temp" id="temp2">18</span>
+          </div>
+        </div>
+        <div class="days">
+          <h3>Tomorrow</h3>
+          <img src="assets/some_sun.png" alt="sunny" class="icon-m" />
+          <p>some sun</p>
+          <div class="temp-readings flex align justify">
+            <span class="hi-temp" id="temp3">27</span>
+            <span class="lo-temp" id="temp4">19</span>
+          </div>
+        </div>
+        <div class="days">
+          <h3>Friday</h3>
+          <img src="assets/some_clouds.png" alt="cloudy" class="icon-m" />
+          <p>some clouds</p>
+          <div class="temp-readings flex align justify">
+            <span class="hi-temp" id="temp5">21</span>
+            <span class="lo-temp" id="temp6">16</span>
+          </div>
+        </div>
+        <div class="days">
+          <h3>Saturday</h3>
+          <img src="assets/some_sun.png" alt="sunny" class="icon-m" />
+          <p>some sun</p>
+          <div class="temp-readings flex align justify">
+            <span class="hi-temp" id="temp7">26</span>
+            <span class="lo-temp" id="temp8">21</span>
+          </div>
+        </div>
+      </div>
+      <footer class="flex align" id="alert">
+        <img src="assets/cookie.png" alt="cookie" class="icon-s" />
+        <p class="alert-msg">
+          <strong>Stop! Cookie time</strong><br />
+          We use cookies (sadly not the edible ones) to personalize content and
+          ads, to provide social media features and to analyse our traffic.
+          <a href="#">Read more...</a>
+        </p>
+        <button onclick="hideAlertBox('#alert')">I Accept</button>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
