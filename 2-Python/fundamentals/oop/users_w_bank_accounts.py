@@ -33,7 +33,10 @@ class BankAccount:
 class User:
     def __init__(self, name):
         self.name = name
-        self.account = BankAccount(int_rate = 0.02, balance = 0)
+        self.account = {
+            "checking" : BankAccount(int_rate = 0.02, balance = 732),
+            "savings" : BankAccount(int_rate = 0.05, balance = 66000)
+        }
 
     # def make_deposit(self):	
     #     self.account.deposit()
@@ -44,11 +47,12 @@ class User:
     #     print(self.account.balance)
 
     def display_user_balance(self):
-        print(f"User: {self.name}, Account Balance: {self.account.display_account_info()}")
+        print(f"User: {self.name}, Checking Balance: {self.account['checking'].display_account_info()}")
+        print(f"User: {self.name}, Savings Balance: {self.account['savings'].display_account_info()}")
 
 p_butler = User("Peppermint Butler")
-p_butler.account.deposit(100)
-p_butler.account.withdraw(50)
+p_butler.account['savings'].deposit(666)
+p_butler.account['checking'].withdraw(66)
 p_butler.display_user_balance()
 
 # BankAccount.print_all_accounts_info()
