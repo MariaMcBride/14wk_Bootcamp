@@ -12,23 +12,31 @@ class User:
     def display_user_balance(self):
         print(f"User: {self.name}, Balance: {self.account_balance}")
 
+    def transfer_money(self, user, amount):
+        self.account_balance -= amount
+        user.account_balance += amount
+        self.display_user_balance()
+        user.display_user_balance()
+
 user_1 = User("Princess Bubblegum")
 user_1.make_deposit(1000)
 user_1.make_deposit(2000)
 user_1.make_deposit(3000)
 user_1.make_withdrawal(1000)
-print(user_1.account_balance)
+user_1.display_user_balance()
 
 user_2 = User("Peppermint Butler")
 user_2.make_deposit(666)
 user_2.make_deposit(666)
 user_2.make_withdrawal(66)
 user_2.make_withdrawal(66)
-print(user_2.account_balance)
+user_2.display_user_balance()
 
 user_3 = User("Lumpy Space Princess")
 user_3.make_deposit(500)
 user_3.make_withdrawal(100)
 user_3.make_withdrawal(50)
 user_3.make_withdrawal(50)
-print(user_3.account_balance)
+user_3.display_user_balance()
+
+user_1.transfer_money(user_3, 500)
