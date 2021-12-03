@@ -1,18 +1,13 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template
 
 app = Flask(__name__)    
 
 @app.route('/')
-def home():
-    return render_template("index.html", x = 8, y = 8)
-
 @app.route('/<int:x>/')
-def rows(x):
-    return render_template("index.html", x = x, y = 8)
-
 @app.route('/<int:x>/<int:y>/')
-def columns(x, y):
-    return render_template("index.html", x = x, y = y)
+@app.route('/<int:x>/<int:y>/<string:color1>/<string:color2>/')
+def checkerboard(x = 8, y = 8, color1 = "red", color2 = "black"):
+    return render_template("index.html", x = x, y = y, color1 = color1, color2 = color2)
 
 @app.errorhandler(404)
 def error_msg(error):
