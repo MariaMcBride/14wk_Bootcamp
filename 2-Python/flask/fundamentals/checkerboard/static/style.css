@@ -1,0 +1,32 @@
+h1 {
+  font-family: "Amatic SC", cursive;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-color: transparent;
+}
+
+td {
+  width: 30px;
+  height: 30px;
+}
+
+.color1 {
+  background-color: red;
+}
+
+.color2 {
+  background-color: black;
+}
