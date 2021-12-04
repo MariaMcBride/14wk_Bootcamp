@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>Ninja Gold</title>
+  </head>
+  <body>
+    <div class="gold flex">
+      <p>
+        Your Gold:
+        <div class="gold-count flex border">{{ session['gold_count'] }}</div>
+      </p>
+    </div>
+    <div class="container">
+      <div class="properties flex justify">
+        {% for location,(min,max) in buildings.items() %}
+        <form action="/process_money" method="post" class="border">
+          <h2>{{location}}</h2>
+          <p>(earns {{min}}-{{max}} golds)</p>
+          <input type="hidden" name="building" value="{{location}}" />
+          <button class="btn border" type="submit">Find Gold!</button>
+        </form>
+        {% endfor %}
+      </div>
+      <p class="bottom">Activities:</p>
+      <div class="activity border">
+        <ul>
+          {% for activity in session['activities'] %}
+          <li class="green">{{activity}}</li>
+          {% endfor %}
+
+          {% comment %} {% for activity in session['activities'] %}
+          <li class="green">{{activity}}</li>
+          {% endfor %} {% endcomment %}
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
