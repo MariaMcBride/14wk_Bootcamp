@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %}Survey Results{% endblock %} {% block
+content %}
+<div class="form-body">
+  <div class="row">
+    <div class="form-holder">
+      <div class="form-content">
+        <div class="form-items">
+          <h4>Submitted Info:</h4>
+          <div class="col-md-12">
+            <table>
+              <tr>
+                <td>Name:</td>
+                <td class="info">{{ session['name'] }}</td>
+              </tr>
+              <tr>
+                <td>Dojo Location:</td>
+                <td class="info">{{ session['location'] }}</td>
+              </tr>
+              <tr>
+                <td>Favorite Language:</td>
+                <td class="info">{{ session['language'] }}</td>
+              </tr>
+              <tr>
+                <td>Comments:</td>
+                <td class="info">{{ session['comment'] }}</td>
+              </tr>
+            </table>
+
+            <div class="form-button mt-3">
+              <a href="/" class="btn btn-primary">Go Back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
