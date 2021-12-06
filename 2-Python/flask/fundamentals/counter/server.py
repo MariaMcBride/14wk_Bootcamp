@@ -11,6 +11,11 @@ def index():
         session['visits'] += 1
     return render_template("index.html")
 
+@app.route('/add_two/')
+def plus_two():
+    session['visits'] += 2
+    return render_template("index.html")
+
 @app.route('/destroy_session/')
 def clear_session():
     session.clear()
@@ -18,3 +23,4 @@ def clear_session():
 
 if __name__=="__main__":    
     app.run(debug=True)
+    
