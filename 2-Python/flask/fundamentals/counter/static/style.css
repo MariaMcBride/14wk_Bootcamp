@@ -1,0 +1,9 @@
+body {
+  font-family: Roboto, "Open Sans", sans-serif;
+  margin: 50px auto;
+}
+
+h1,
+h3 {
+  text-align: center;
+}
