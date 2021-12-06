@@ -6,7 +6,12 @@ content %}
       <div class="form-content">
         <div class="form-items">
           <h3>Dojo Survey</h3>
-          <form class="requires-validation" novalidate>
+          <form
+            action="/process"
+            method="post"
+            class="requires-validation"
+            novalidate
+          >
             <div class="col-md-12">
               <label for="name">Name:</label>
               <input

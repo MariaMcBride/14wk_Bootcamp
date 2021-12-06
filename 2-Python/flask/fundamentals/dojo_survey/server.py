@@ -10,21 +10,13 @@ def index():
     return render_template("index.html")
 
 @app.route('/process', methods=['GET', 'POST'])
-def submit_form():
-    if request.method == 'POST':
-        session.permanent = True   
-        name = request.form['name']    
-        session['name'] = name
-        location = request.form['location']
-        session['location'] = location
-        language = request.form['language']
-        session['language'] = language
-        comment = request.form['textarea']
-        session['comment'] = comment
-        
-        # session['location'] = request.form['location']
-        # session['language'] = request.form['language']
-        # session['comment'] = request.form['textarea'] 
+def process():    
+    if request.form == 'POST':
+        session.permanent = True       
+        session['name'] = request.form['name']
+        session['location'] = request.form['location']
+        session['language'] = request.form['language']
+        session['comment'] = request.form['textarea'] 
     return redirect('/result')
 
 @app.route('/result')
