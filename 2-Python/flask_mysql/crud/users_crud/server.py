@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, session
-from users import User
+from flask import Flask, render_template, request, redirect
+from user import User
 
 app = Flask(__name__)    
 app.secret_key = "worcesterschire"
@@ -16,12 +16,10 @@ def users():
 def new_user():
     return render_template("create_new_user.html")
 
-@app.route('/user/create', methods=['POST', 'GET'])
+@app.post('/user/create')
 def create_new():
-    if request.method == 'POST':
-        print(request.form)
-        User.add(request.form)
-        return redirect('/users')
+    user_id = User.add(request.form)
+    return redirect(f'/user/show/{user_id}')
 
 @app.route('/user/show/<int:id>')
 def show(id):
@@ -37,17 +35,18 @@ def edit(id):
     }
     return render_template("edit_user.html", user = User.get_id(data))
 
-@app.route('/user/update', methods=['POST'])
-def update():
-    User.update(request.form)
-    return redirect('/users')
+@app.post('/user/update/<int:id>')
+def update(id):
+    data = {
+        **request.form,
+        "id":id
+    }
+    User.update(data)
+    return redirect(f'/user/show/{id}')
 
 @app.route('/user/delete/<int:id>')
 def delete(id):
-    data = {
-        "id":id
-    }
-    User.delete(data)
+    User.delete(id = id) # if you pass in this variable with the value, instead of having a dictionary called data, you can use ** in front of the data parameter in classmethod
     return redirect('/users')
 
 @app.errorhandler(404)

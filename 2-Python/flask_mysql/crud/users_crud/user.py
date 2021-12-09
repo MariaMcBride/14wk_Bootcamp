@@ -1,5 +1,4 @@
-from flask_app.config.mysqlconnection import connectToMySQL
-DB = "users_schema"
+from mysqlconnection import connectToMySQL
 
 class User:
     def __init__( self , data ):
@@ -38,7 +37,7 @@ class User:
         return result
     
     @classmethod
-    def delete(cls, data):
+    def delete(cls, **data): # ** wraps data into a dictionary
         query = "DELETE FROM users WHERE id = %(id)s;"
         result = connectToMySQL('users_schema').query_db(query, data)
         return result
