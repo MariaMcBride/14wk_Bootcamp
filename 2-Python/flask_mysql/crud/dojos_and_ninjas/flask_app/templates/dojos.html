@@ -68,7 +68,8 @@
             <div class="card-body">
               <h1 class="card-title mb-3">All Dojos</h1>
               {% for dojo in dojos %}
-              <a href="/dojo/{{ dojo.id }}" class="card-text">{{ dojo.name }}</a
+              <a href="/dojos/{{ dojo.id }}" class="card-text"
+                >{{ dojo.name }}</a
               ><br />
               {% endfor %}
               <a href="/ninjas" class="btn btn-primary mt-4 my-3">Add Ninja</a>

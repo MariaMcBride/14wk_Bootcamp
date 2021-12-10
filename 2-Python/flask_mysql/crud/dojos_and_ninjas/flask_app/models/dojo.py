@@ -34,9 +34,9 @@ class Dojo:
         for db_row in result:
             ninja_data = {
                 "id": db_row['ninjas.id'],
-                "first_name": db_row['ninjas.first_name'],
-                "last_name": db_row['ninjas.last_name'],
-                "age": db_row['ninjas.age'],
+                "first_name": db_row['first_name'],
+                "last_name": db_row['last_name'],
+                "age": db_row['age'],
                 "created_at": db_row['ninjas.created_at'],
                 "updated_at": db_row['ninjas.updated_at'],
             }

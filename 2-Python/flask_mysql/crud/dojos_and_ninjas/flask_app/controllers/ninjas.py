@@ -8,5 +8,5 @@ def add_ninja():
 
 @app.post('/ninjas/create') # create post 
 def create():    
-    dojo_id = ninja.Ninja.save(request.form)
-    return redirect(f'/dojos/{dojo_id}')
+    ninja.Ninja.save(request.form)
+    return redirect(f'/dojos/{request.form["dojo_id"]}')

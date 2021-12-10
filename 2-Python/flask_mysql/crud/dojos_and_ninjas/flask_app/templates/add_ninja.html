@@ -12,26 +12,27 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-
     <title>New Ninja</title>
   </head>
   <body class="bg-dark">
     <div
       class="
-        container-sm
+        container
         mt-5
         p-4
         mb-2
         bg-secondary bg-gradient
         text-white
         bg-opacity-25
+        w-50
       "
     >
+      <h1 class="mb-3">New Ninja</h1>
       <form action="/ninjas/create" method="post">
         <div class="mb-3">
           <label for="dojo">Dojo:</label>
           <select
-            class="form-select"
+            class="form-select mb-3"
             aria-label="Default select"
             name="dojo_id"
           >
@@ -43,19 +44,19 @@
           <label for="first_name" class="form-label">First Name:</label>
           <input
             type="text"
-            class="form-control"
+            class="form-control mb-3"
             id="first_name"
             name="first_name"
           />
           <label for="last_name" class="form-label">Last Name:</label>
           <input
             type="text"
-            class="form-control"
+            class="form-control mb-3"
             id="last_name"
             name="last_name"
           />
           <label for="age" class="form-label">Age:</label>
-          <input type="number" class="form-control" id="age" name="age" />
+          <input type="number" class="form-control mb-2" id="age" name="age" />
           <input type="submit" value="Add Ninja" class="btn btn-primary mt-4" />
         </div>
       </form>
