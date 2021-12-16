@@ -33,7 +33,7 @@ class User:
         return user_id
 
     @classmethod # READ ONE
-    def get_by_id(cls, **data):
+    def get_one(cls, **data):
         query = "SELECT * FROM register WHERE id = %(id)s;"
         result = connectToMySQL(DB).query_db(query, data)
         return cls( result[0] )
@@ -55,13 +55,13 @@ class User:
         elif not data['last_name'].isalpha():
             flash('Last name must contain only letters.', 'register')
             is_valid = False
+        if not EMAIL_REGEX.match(data['email']):
+            flash('Invalid email address.', 'register')
+            is_valid = False
         query = "SELECT * FROM register WHERE email = %(email)s;"
         result = connectToMySQL(DB).query_db(query, data)
         if result:
             flash('Email is already in use. Please log in.', 'register')
-            is_valid = False
-        if not EMAIL_REGEX.match(data['email']):
-            flash('Invalid email address.', 'register')
             is_valid = False
         if len(data['password']) < 8:
             flash('Password must be at least 8 characters.', 'register')
