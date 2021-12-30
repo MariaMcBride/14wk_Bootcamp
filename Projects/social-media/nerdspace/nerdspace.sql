@@ -24,10 +24,16 @@ CREATE TABLE IF NOT EXISTS `nerdspace_schema`.`users` (
   `last_name` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
   `password` CHAR(60) NULL,
+  `confirm_password` CHAR(60) NULL,
   `dob` DATE NULL,
+  `avatar` VARCHAR(255) NULL,
+  `cover_photo` VARCHAR(255) NULL,
+  `bio` VARCHAR(255) NULL,
+  `occupation` VARCHAR(60) NULL,
+  `company` VARCHAR(60) NULL,
+  `location` VARCHAR(60) NULL,
   `created_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW(),
-  `profile_pic` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -37,11 +43,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nerdspace_schema`.`posts` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `type` VARCHAR(225) NULL,
+  `content` TINYTEXT NULL,
   `created_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW(),
-  `total_likes` INT NULL,
-  `total_comments` INT NULL,
   `postuser_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_posts_users_idx` (`postuser_id` ASC) VISIBLE,
@@ -54,17 +58,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `nerdspace_schema`.`followers`
+-- Table `nerdspace_schema`.`follows`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nerdspace_schema`.`followers` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `nerdspace_schema`.`follows` (
   `created_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW(),
   `followeduser_id` INT NOT NULL,
   `follower_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
   INDEX `fk_followers_users1_idx` (`followeduser_id` ASC) VISIBLE,
   INDEX `fk_followers_users2_idx` (`follower_id` ASC) VISIBLE,
+  PRIMARY KEY (`followeduser_id`, `follower_id`),
   CONSTRAINT `fk_followers_users1`
     FOREIGN KEY (`followeduser_id`)
     REFERENCES `nerdspace_schema`.`users` (`id`)
@@ -83,7 +86,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nerdspace_schema`.`comments` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `content` VARCHAR(255) NULL,
+  `content` TINYTEXT NULL,
   `created_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW(),
   `commentuser_id` INT NOT NULL,
@@ -108,14 +111,13 @@ ENGINE = InnoDB;
 -- Table `nerdspace_schema`.`likes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nerdspace_schema`.`likes` (
-  `id` INT NOT NULL AUTO_INCREMENT,
   `created_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW(),
   `likeuser_id` INT NOT NULL,
   `likepost_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
   INDEX `fk_likes_users1_idx` (`likeuser_id` ASC) VISIBLE,
   INDEX `fk_likes_posts1_idx` (`likepost_id` ASC) VISIBLE,
+  PRIMARY KEY (`likeuser_id`, `likepost_id`),
   CONSTRAINT `fk_likes_users1`
     FOREIGN KEY (`likeuser_id`)
     REFERENCES `nerdspace_schema`.`users` (`id`)
@@ -124,31 +126,6 @@ CREATE TABLE IF NOT EXISTS `nerdspace_schema`.`likes` (
   CONSTRAINT `fk_likes_posts1`
     FOREIGN KEY (`likepost_id`)
     REFERENCES `nerdspace_schema`.`posts` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `nerdspace_schema`.`feed`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nerdspace_schema`.`feed` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `created_at` DATETIME NULL DEFAULT NOW(),
-  `updated_at` DATETIME NULL DEFAULT NOW(),
-  `feedpost_id` INT NOT NULL,
-  `feeduser_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_feed_posts1_idx` (`feedpost_id` ASC) VISIBLE,
-  INDEX `fk_feed_users1_idx` (`feeduser_id` ASC) VISIBLE,
-  CONSTRAINT `fk_feed_posts1`
-    FOREIGN KEY (`feedpost_id`)
-    REFERENCES `nerdspace_schema`.`posts` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_feed_users1`
-    FOREIGN KEY (`feeduser_id`)
-    REFERENCES `nerdspace_schema`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
