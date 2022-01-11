@@ -1,7 +1,43 @@
-.App {
-  text-align: center;
+.flex {
+  display: flex;
+}
+.app {
+  width: 950px;
+  background-color: silver;
+  margin: 20px auto;
+  padding: 20px;
+}
+.header {
+  height: 150px;
+  background-color: #6aa84f;
+  margin-bottom: 20px;
+}
+.nav {
+  height: 300px;
+  width: 200px;
+  background-color: #6fa8dc;
+}
+.main {
+  height: 400px;
+  width: 710px;
+  background-color: #e06666;
+  margin-left: 20px;
+  padding: 10px;
+}
+.subcontents {
+  height: 200px;
+  width: 210px;
+  background-color: #ffd966;
+  margin: 10px;
+}
+.ads {
+  height: 120px;
+  width: 670px;
+  background-color: #b4a7d6;
+  margin: 10px;
 }
 
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +71,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
