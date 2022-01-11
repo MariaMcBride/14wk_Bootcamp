@@ -45,9 +45,9 @@ Take the following HTML and update all functions to arrow functions. -->
 
     document.getElementById("hover-this").onmouseout = () => setBackgroundColorById("body", "white");
 
-    document.getElementById("feature").onclick = () => setBackgroundColorById("feature", document.getElementById("color-input").value);
-
     getValueFromId = (id) => document.getElementById(id).value;
+
+    document.getElementById("feature").onclick = () => setBackgroundColorById("feature", getValueFromId("color-input"));
 
     setBackgroundColorById = (id, color) => document.getElementById(id).style = "background-color: " + color;
 
