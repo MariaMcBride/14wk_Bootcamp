@@ -27,12 +27,12 @@ const UserForm = (props) => {
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Password:</span>
-          <input onChange={(e) => { setPassword(e.target.value) }} type="text" name="password" class="form-control" />
+          <input onChange={(e) => { setPassword(e.target.value) }} type="password" name="password" class="form-control" />
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Confirm Password:</span>
-          <input onChange={(e) => { setConfirmPassword(e.target.value) }} type="text" name="confirmpass" class="form-control" />
+          <input onChange={(e) => { setConfirmPassword(e.target.value) }} type="password" name="confirmPassword" class="form-control" />
         </div>
       </form>
       <div className="m-3">
