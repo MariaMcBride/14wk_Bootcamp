@@ -10,16 +10,21 @@ const Tabs = (props) => {
         {
           props.items.map((item, i) => {
             let classAdds = "";
-            item === selectedTab ? classAdds += "active fw-bold fade-in bg-light" : classAdds += "";
+            item === selectedTab && (classAdds += "active fw-bold fade-in bg-light");
             return (
               <li className="nav-item">
-                <button key={i} onClick={(e) => { setSelectedTab(item); }} className={`nav-link link-info ${classAdds}`}>{item.header}</button>
+                <button key={i} onClick={(e) => { setSelectedTab(item); 
+                // if (item.hasOwnProperty('callback')) {
+                //   item.callback();
+                // }                 
+                item?.callback?.(); 
+                  }} className={`nav-link link-info ${classAdds}`}>{item.header}</button>
               </li>)
           })
         }
       </ul>
-      <div class="tab-content p-4">
-        <p>{selectedTab.content}</p>
+      <div class="tab-content text-white p-4">
+        <p>{selectedTab.callback()}</p>
       </div>
     </div>
   )

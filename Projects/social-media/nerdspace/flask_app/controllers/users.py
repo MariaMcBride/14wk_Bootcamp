@@ -43,6 +43,22 @@ def update_profile(id):
     avatar = request.files.get('avatar')
     if avatar:
         avatar.save(os.path.join(app.static_folder, f"img/{session['user_id']}.webp"))
+    if not User.validate_update(request.form):
+        return redirect(f'/profile/edit/{id}')
+    data = {
+      **request.form,
+      'avatar': f"{session['user_id']}.webp" if avatar else "user-circle.png"
+    }
+    User.update(**data, id=id)
+    return redirect(f'/profile/{id}')
+
+@app.post('/profile/updatecover/<int:id>')
+@login_required
+def update_profile_cover(id):
+    print(request.files)
+    avatar = request.files.get('avatar')
+    if avatar:
+        avatar.save(os.path.join(app.static_folder, f"img/{session['user_id']}.webp"))
     cover_photo = request.files.get('cover_photo')
     if cover_photo:
         cover_photo.save(os.path.join(app.static_folder, f"img/{session['user_id']}_cover.webp"))
@@ -50,7 +66,6 @@ def update_profile(id):
         return redirect(f'/profile/edit/{id}')
     data = {
       **request.form,
-      'avatar': f"{session['user_id']}.webp" if avatar else "user-circle.png",
       'cover_photo': f"{session['user_id']}_cover.webp" if cover_photo else "default-cover.jpg"
     }
     User.update(**data, id=id)
