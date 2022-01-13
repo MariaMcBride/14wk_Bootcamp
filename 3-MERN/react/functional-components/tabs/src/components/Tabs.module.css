@@ -1,0 +1,50 @@
+.nav-tabs {
+  border: none;
+}
+
+.nav-tabs .nav-item .nav-link {
+  border: none;
+  position: relative;
+}
+
+.nav-tabs .nav-item .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background: #e40046;
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+  border-bottom: 3px solid #e40046;
+}
+
+.nav-tabs .nav-item .nav-link:hover::before {
+  left: 0;
+  width: 100%;
+}
+
+.nav-tabs .nav-item .nav-link.active::before {
+  width: 0;
+}
+
+.tab-content {
+  padding: 10px;
+}
+
+.tab-pane {
+  display: block;
+  position: relative;
+  left: 100%;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.tab-pane.active {
+  left: 0;
+}
