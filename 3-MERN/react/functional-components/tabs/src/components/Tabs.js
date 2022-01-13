@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styles from './Tabs.module.css';
 
 const Tabs = (props) => {
   console.log(props);
@@ -11,7 +10,7 @@ const Tabs = (props) => {
         {
           props.items.map((item, i) => {
             let classAdds = "";
-            item === selectedTab ? classAdds += "active" : classAdds += "";
+            item === selectedTab ? classAdds += "active fw-bold fade-in bg-light" : classAdds += "";
             return (
               <li className="nav-item">
                 <button key={i} onClick={(e) => { setSelectedTab(item); }} className={`nav-link link-info ${classAdds}`}>{item.header}</button>
