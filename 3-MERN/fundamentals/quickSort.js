@@ -1,3 +1,6 @@
+const arr1 = [22, 13, 4, 1, 8, 26, 9, 7];
+
+// Middle Pivot
 const partition = (arr, left = 0, right = arr.length - 1) => {
   let pivot = arr[Math.floor((left + right) / 2)],
     i = left,
@@ -20,8 +23,30 @@ const partition = (arr, left = 0, right = arr.length - 1) => {
   return i;
 }
 
-// console.log(partition([24, 2, 14, 29, 35, 7, 17]));
+// -------------------------------------------
 
+// End Pivot
+// const partition = (arr, left = 0, right = arr.length - 1) => {
+//   const pivot = arr[right];
+//   let pi = left;
+//   for (let i = left; i < right; i++) {
+//     if (arr[i] < pivot) {
+//       [arr[i], arr[pi]] = [arr[pi], arr[i]];
+//       pi++;
+//     }
+//   }
+
+//   [arr[pi], arr[right]] = [arr[right], arr[pi]]
+//   // console.log(arr);
+//   // console.log(pivot);
+//   return pi;
+// };
+
+console.log(partition(arr1));
+
+// ---------------Quick Sort------------------
+
+// Recursive
 const quicksort = (arr, left = 0, right = arr.length - 1) => {
   if (left < right) {
     pivotIndex = partition(arr, left, right);
@@ -31,7 +56,35 @@ const quicksort = (arr, left = 0, right = arr.length - 1) => {
   return arr;
 }
 
-console.log(quicksort([24, 2, 14, 29, 35, 7, 17]));
+// -------------------------------------------
+
+// // Iterative
+// const quicksort = (arr) => {
+//   let newArr = [], left = 0, right = arr.length - 1;
+//   newArr.push({ i: left, j: right });
+//   // newArr.push(0);
+//   // newArr.push(arr.length - 1);
+
+//   while (newArr.length) {
+//     const { i, j } = newArr.shift();
+//     // right = newArr.pop();
+//     // left = newArr.pop();
+//     pi = partition(arr, i, j);
+//     if (pi - 1 > i) {
+//       newArr.push({ i: i, j: pi - 1 });
+//       // newArr.push(left);
+//       // newArr.push(pi - 1);
+//     }
+//     if (pi + 1 < j) {
+//       newArr.push({ i: pi + 1, j: j });
+//       // newArr.push(pi + 1);
+//       // newArr.push(right);
+//     }
+//   }
+//   return arr;
+// }
+
+console.log(quicksort(arr1));
 
 // Bonus 1:  Different strategies are used to choose the pivot. Any pivot would work, so why not just choose an easy pivot, such as the left-most value? The answer is that the time complexity could be greatly increased if we were to call quicksort on an array that is already sorted. Diagram this out and determine why this is true.
 
