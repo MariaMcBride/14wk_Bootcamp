@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const Tabs = (props) => {
-  console.log(props);
+  // console.log(props);
   const [selectedTab, setSelectedTab] = useState(props.items[1]);
 
   return (
@@ -10,21 +10,23 @@ const Tabs = (props) => {
         {
           props.items.map((item, i) => {
             let classAdds = "";
-            item === selectedTab && (classAdds += "active fw-bold fade-in bg-light");
+            console.log(item);
+            item === selectedTab && (classAdds += "active fw-bold bg-light fade-in");
             return (
               <li className="nav-item">
-                <button key={i} onClick={(e) => { setSelectedTab(item); 
-                // if (item.hasOwnProperty('callback')) {
-                //   item.callback();
-                // }                 
-                item?.callback?.(); 
-                  }} className={`nav-link link-info ${classAdds}`}>{item.header}</button>
+                <button key={i} onClick={(e) => {
+                  setSelectedTab(item);
+                  // if (item.hasOwnProperty('callback')) {
+                  //   item.callback();
+                  // }                 
+                  item?.callback?.();
+                }} className={`nav-link link-info ${classAdds}`}>{item.header}</button>
               </li>)
           })
         }
       </ul>
       <div class="tab-content text-white p-4">
-        <p>{selectedTab.callback()}</p>
+        <p>{selectedTab.callback(selectedTab.content)}</p>
       </div>
     </div>
   )

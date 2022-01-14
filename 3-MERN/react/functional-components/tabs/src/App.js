@@ -2,10 +2,14 @@ import './App.css';
 import Tabs from './components/Tabs';
 
 function App() {
+  const callbackMsg = (content) => {
+    return (`${content} Here's more vague content.`);
+  }
+
   const tabs = [
-    { header: "Tab 1", content: "Tab 1 content is showing here.", callback: function () {return (`${this.content}  Here's more vague content.`)}},
-    { header: "Tab 2", content: "Tab 2 content is showing here.", callback: function () {return (`${this.content}  Here's more vague content.`)}},
-    { header: "Tab 3", content: "Tab 3 content is showing here.", callback: function () {return (`${this.content}  Here's more vague content.`)}}
+    { header: "Tab 1", content: "Tab 1 content is showing here.", callback: callbackMsg },
+    { header: "Tab 2", content: "Tab 2 content is showing here.", callback: callbackMsg },
+    { header: "Tab 3", content: "Tab 3 content is showing here.", callback: callbackMsg }
   ];
 
   return (
