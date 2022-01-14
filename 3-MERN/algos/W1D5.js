@@ -68,9 +68,9 @@ console.log(partition(nums4));
 // Recursive
 const quicksort = (nums = [], left = 0, right = nums.length - 1) => {
   if (left < right) {
-    pivotIndex = partition(nums, left, right);
-    quicksort(nums, left, pivotIndex - 1);
-    quicksort(nums, pivotIndex + 1, right);
+    pi = partition(nums, left, right);
+    quicksort(nums, left, pi - 1);
+    quicksort(nums, pi + 1, right);
   }
   return nums;
 }
