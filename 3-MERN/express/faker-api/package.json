@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "express": "^4.17.2",
+    "faker": "^6.6.6"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "faker-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.3"
+  }
+}
