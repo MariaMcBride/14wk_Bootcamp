@@ -13,13 +13,9 @@
 4. Create 5 students with the appropriate info.
 
 > db.students.insert({name: 'Benjamin McBride', home_state: 'California', lucky_number: 69, birthday: {month: 9, day: 26, year: 1991}})
-
 > db.students.insert({name: 'Eric Toribio', home_state: 'Florida', lucky_number: 27, birthday: {month: 11, day: 17, year: 1992}})
-
 > db.students.insert({name: 'Nate Trichanh', home_state: 'California', lucky_number: 7, birthday: {month: 6, day: 17, year: 2002}})
-
 > db.students.insert({name: 'Augustin Kim', home_state: 'California', lucky_number: 6, birthday: {month: 4, day: 11, year: 1995}})
-
 > db.students.insert({name: 'Craig Brinkman', home_state: 'Colorado', lucky_number: 77, birthday: {month: 4, day: 15, year: 1993}})
 
 5. Get all students.
