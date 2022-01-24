@@ -1,74 +1,62 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
+import { useParams, useHistory, Link } from "react-router-dom";
 import axios from "axios";
-import { useHistory, useParams } from "react-router-dom";
+import ProductForm from "../components/ProductForm";
+import DeleteButton from "../components/DeleteButton";
 
-export const UpdateProduct = () => {
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState();
-  const [description, setDescription] = useState("");
+const UpdateProduct = (props) => {
   const { id } = useParams();
   const history = useHistory();
+  const [product, setProduct] = useState();
+  const [loaded, setLoaded] = useState(false);
 
   const apiURL = `http://localhost:8000/api/product/${id}`;
   const updateURL = `http://localhost:8000/api/product/update/${id}`;
+
+  console.log(id);
 
   useEffect(() => {
     axios.get(apiURL)
       .then(res => {
         console.log(res.data.results);
-        setTitle(res.data.results.title)
-        setPrice(res.data.results.price)
-        setDescription(res.data.results.description)
+        setProduct(res.data.results);
+        setLoaded(true);
+        // history.push(`/${id}`)
       })
       .catch(err => console.log(err));
-  }, [apiURL]);
+  }, [apiURL, history, id]);
 
-  const updateProduct = e => {
-    e.preventDefault();
-    axios.put(updateURL, {
-      title,
-      price,
-      description
-    })
-      .then(res => {
-        console.log(res);
-        history.push(`/${id}`)
-      })
-      .catch(err => console.error(err));
+  const updateProduct = product => {
+    axios.put(updateURL, product)
+      .then(res => console.log(res));
   }
 
   return (
     <div>
       <h3>Update Product</h3>
-      <form onSubmit={updateProduct} className='px-5'>
-        <div className="row align-items-center mb-3">
-          <div className="col">
-            Title
+      {
+        loaded && <>
+          <ProductForm
+            onSubmitProp={updateProduct}
+            initialTitle={product.title}
+            initialPrice={product.price}
+            initialDescription={product.description}
+            buttonName="Update" />
+          <div className="d-flex justify-content-center align-items-center gap-1">
+            <Link to={'/'} className="btn btn-success m-3 px-5 fw-bold text-white">
+              Home
+            </Link>
+            <DeleteButton
+              productId={product._id}
+              buttonName="Delete"
+              successCallback={() =>
+                history.push('/')} />
           </div>
-          <div className="col-8">
-            <input onChange={(e) => setTitle(e.target.value)} value={title} type="text" className="form-control" name="title" />
-          </div>
-        </div>
-        <div className="row align-items-center mb-3">
-          <div className="col">
-            Price
-          </div>
-          <div className="col-8">
-            <input onChange={(e) => setPrice(e.target.value)} value={price} type="number" className="form-control" name="price" />
-          </div>
-        </div>
-        <div className="row align-items-center mb-3">
-          <div className="col">
-            Description
-          </div>
-          <div className="col-8">
-            <textarea onChange={(e) => setDescription(e.target.value)} value={description} className="form-control" name="description"></textarea>
-          </div>
-        </div>
-        <div className="d-flex justify-content-center">
-          <input className="btn btn-warning m-3 px-5 fw-bold text-white" type="submit" value="Update" />
-        </div>
-      </form>
+        </>
+      }
     </div>
   )
 }
+
+export default UpdateProduct;

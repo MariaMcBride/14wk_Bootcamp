@@ -1,11 +1,11 @@
+/* eslint-disable eqeqeq */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
+import DeleteButton from './DeleteButton';
 
-export const ProductList = (props) => {
+const ProductList = (props) => {
   const [allProducts, setAllProducts] = useState([]);
-  // const { removeFromDom } = props;
-  const [deleteItem, setDeleteItem] = useState();
   const history = useHistory();
 
   const apiURL = 'http://localhost:8000/api/product';
@@ -17,33 +17,27 @@ export const ProductList = (props) => {
         setAllProducts(res.data.results);
       })
       .catch(err => console.log(err));
-  }, [apiURL, deleteItem]);
+  }, [apiURL]);
 
-  const deleteProduct = (id) => {
-    axios.delete(`http://localhost:8000/api/product/delete/${id}`)
-      .then(res => {
-        console.log(res);
-        setDeleteItem(res)
-        // removeFromDom(id)
-      })
-      .catch(err => console.log(err));
+  const removeFromDom = productId => {
+    setAllProducts(allProducts.filter(product => product._id != productId))
     history.push('/');
   }
 
   return (
     <div>
       {
-        allProducts.map((product, i) => {
+        allProducts.map((product, idx) => {
           return (
             <div className="d-flex justify-content-center">
               <ul className="list-group list-group-flush w-50">
-                <li key={i} className="list-group-item d-flex justify-content-between align-items-center px-4">
+                <li key={idx} className="list-group-item d-flex justify-content-between align-items-center px-4">
                   <Link to=
                     {`/${product._id}`} className="link-info text-decoration-none">
                     {product.title}
                   </Link>
                   <span className="fw-bold">
-                    <button onClick={(e) => { deleteProduct(product._id) }} className="badge bg-danger border-0">-</button>
+                    <DeleteButton productId={product._id} successCallback={() => removeFromDom(product._id)} buttonName="-" />
                   </span>
                 </li>
               </ul>
@@ -54,3 +48,5 @@ export const ProductList = (props) => {
     </div>
   )
 }
+
+export default ProductList;

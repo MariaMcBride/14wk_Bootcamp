@@ -4,9 +4,9 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { Main } from './views/Main';
-import { ProductDetail } from './views/ProductDetail';
-import { UpdateProduct } from './views/UpdateProduct';
+import Main from './views/Main';
+import ProductDetail from './views/ProductDetail';
+import UpdateProduct from './views/UpdateProduct';
 import './App.css';
 
 function App() {

@@ -1,34 +1,24 @@
+/* eslint-disable import/no-anonymous-default-export */
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-export const ProductForm = () => {
-  // const [formData, setFormData] = useState({
-  //   title: "",
-  //   price: "",
-  //   description: ""
-  // })
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState();
-  const [description, setDescription] = useState("");
+export default (props) => {
+  const { initialTitle, initialPrice, initialDescription, onSubmitProp, buttonName } = props;
+  const [title, setTitle] = useState(initialTitle);
+  const [price, setPrice] = useState(initialPrice);
+  const [description, setDescription] = useState(initialDescription);
   const history = useHistory();
-
-  const apiURL = 'http://localhost:8000/api/product/new';
 
   const onSubmitHandler = (e) => {
     // e.preventDefault();
-    axios.post(apiURL, {
-      title,
-      price,
-      description
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
-    setTitle("");
-    setPrice("");
-    setDescription("");
+    onSubmitProp({ title, price, description });
     history.push('/');
   }
+
+  let classAdds = "";
+  buttonName === "Create" ?
+    classAdds += 'btn-primary' :
+    classAdds += 'btn-warning'
 
   return (
     <div className='container p-3'>
@@ -58,7 +48,7 @@ export const ProductForm = () => {
           </div>
         </div>
         <div className="d-flex justify-content-center">
-          <input className="btn btn-primary m-3 px-5" type="submit" value="Create" />
+          <input className={`btn ${classAdds} m-3 px-5 fw-bold text-white`} type="submit" value={buttonName} />
         </div>
       </form>
     </div>

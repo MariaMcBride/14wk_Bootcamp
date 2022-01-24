@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link, useHistory } from "react-router-dom";
 
-export const ProductDetail = (props) => {
+const ProductDetail = (props) => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   const history = useHistory();
-  // const { removeFromDom } = props;
 
   const apiURL = `http://localhost:8000/api/product/${id}`;
+  const deleteURL = `http://localhost:8000/api/product/delete/${id}`;
 
   useEffect(() => {
     axios.get(apiURL)
@@ -21,10 +21,9 @@ export const ProductDetail = (props) => {
   }, [apiURL, history, id]);
 
   const deleteProduct = () => {
-    axios.delete(`http://localhost:8000/api/product/delete/${id}`)
+    axios.delete(deleteURL)
       .then(res => {
         console.log(res);
-        // removeFromDom(id)
         history.push('/')
       })
       .catch(err => console.log(err));
@@ -55,3 +54,5 @@ export const ProductDetail = (props) => {
     </div>
   )
 }
+
+export default ProductDetail;
