@@ -6,9 +6,10 @@ import DeleteButton from "../components/DeleteButton";
 import Card from '@mui/material/Card'
 import Paper from '@mui/material/Paper';
 
-export default () => {
+export default (props) => {
   const [player, setPlayer] = useState({});
   const { id } = useParams();
+  const { playerStatus } = props;
   const history = useHistory();
 
   const apiURL = `http://localhost:8000/api/player/${id}`;
@@ -50,6 +51,7 @@ export default () => {
             >
               <h5 className="mb-3">{player.name}</h5>
               <p className="mx-auto mb-4"><strong>Position:</strong> {player.position}</p>
+              <p className="mx-auto mb-4"><strong>Status:</strong> {playerStatus}</p>
               <div className="d-flex justify-content-center align-items-center gap-4">
                 <Link to={'/'} className="btn btn-success mt-3 px-4 fw-bold text-white">
                   Home
@@ -59,6 +61,7 @@ export default () => {
                 </Link>
                 <DeleteButton
                   playerId={player._id}
+                  playerName={player.name}
                   successCallback={() =>
                     deletePlayer(player._id)}
                   buttonValue="Delete"

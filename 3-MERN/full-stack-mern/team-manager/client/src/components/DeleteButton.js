@@ -21,7 +21,7 @@ const style = {
 };
 
 export default (props) => {
-  const { player, playerId, successCallback, classMods } = props;
+  const { playerName, playerId, successCallback, classMods } = props;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -52,7 +52,7 @@ export default (props) => {
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Are you sure you want to remove {player}?
+              Are you sure you want to remove {playerName}?
             </Typography>
             <Typography id="transition-modal-description"
               sx={{

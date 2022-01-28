@@ -30,7 +30,7 @@ const ValidationTextField = styled(TextField)({
 });
 
 export default (props) => {
-  const { initialName, initialPosition, onSubmitProp, errors, playerId, buttonStyle } = props;
+  const { initialName, initialPosition, onSubmitProp, errors, playerId, playerName, buttonStyle } = props;
   const [name, setName] = useState(initialName);
   const [position, setPosition] = useState(initialPosition);
   const history = useHistory();
@@ -124,8 +124,13 @@ export default (props) => {
             />
             {
               playerId !== "" &&
-              <DeleteButton playerId={playerId} successCallback={() =>
-                history.push('/')} buttonValue="Delete" classMods={classMods} />
+              <DeleteButton
+                playerId={playerId}
+                playerName={playerName}
+                successCallback={() =>
+                  history.push('/')}
+                buttonValue="Delete"
+                classMods={classMods} />
             }
           </div>
         </Box>

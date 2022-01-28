@@ -82,6 +82,7 @@ export default () => {
                     <StyledTableCell align="center">
                       <DeleteButton
                         playerId={player._id}
+                        playerName={player.name}
                         successCallback={() =>
                           removeFromDom(player._id)}
                         buttonValue="Delete"
