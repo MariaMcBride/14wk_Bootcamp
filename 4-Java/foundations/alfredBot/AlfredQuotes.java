@@ -3,6 +3,8 @@ import java.text.SimpleDateFormat;
 
 public class AlfredQuotes {
 
+    private SimpleDateFormat simpleDateFormat;
+
     public String basicGreeting() {
         // You do not need to code here, this is an example method
         return "Hello, lovely to see you. How are you?";
@@ -33,7 +35,7 @@ public class AlfredQuotes {
 
     public String guestGreeting() {
         String pattern = "k";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        simpleDateFormat = new SimpleDateFormat(pattern);
         int hour = Integer.parseInt(simpleDateFormat.format(new Date()));
         if (hour >= 0 && hour < 12) {
             return "Good morning.";
