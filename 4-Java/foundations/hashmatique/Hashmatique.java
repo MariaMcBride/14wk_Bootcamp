@@ -12,7 +12,7 @@ public class Hashmatique {
         String name = userMap.get("Playground");
         Set<String> keys = userMap.keySet();
         for (String key : keys) {
-            System.out.printf("Track: %s: Lyrics: %s", key, userMap.get(key));
+            System.out.printf("Track: %s\n Lyrics: %s\n", key, userMap.get(key));
         }
     }
 }
