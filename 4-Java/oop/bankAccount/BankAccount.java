@@ -63,7 +63,7 @@ public class BankAccount {
     }
 
     // Create a method to see the total money from the checking and saving:
-    public void displayoverallBalance() {
+    public void displayOverallBalance() {
         System.out.printf("Account Number: %s\n", this.accountNumber);
         System.out.printf("Checking: $%.2f\n", getCheckingBalance());
         System.out.printf("Savings: $%.2f\n", getSavingsBalance());

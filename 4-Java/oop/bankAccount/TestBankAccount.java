@@ -12,7 +12,7 @@ public class TestBankAccount {
         account1.withdrawMoney("checking", 1000.0);
         account1.getCheckingBalance();
         account1.getSavingsBalance();
-        account1.displayoverallBalance();
+        account1.displayOverallBalance();
 
         // ---------- Account 2 Activity ---------- //
         System.out.println("\n------ Account 2 Activity ------");
@@ -21,7 +21,7 @@ public class TestBankAccount {
         account2.withdrawMoney("savings", 5000.0);
         account2.getCheckingBalance();
         account2.getSavingsBalance();
-        account2.displayoverallBalance();
+        account2.displayOverallBalance();
 
         // ----------- Print Statements ------------ //
         System.out.println("\n------ Accounts Created ------");
