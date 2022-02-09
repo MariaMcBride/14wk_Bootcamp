@@ -1,4 +1,4 @@
-package zookeeper;
+package com.codingdojo.zookeeper;
 
 public class Mammal {
 	protected int energyLevel;
