@@ -13,7 +13,7 @@ public class BankAccount {
         numberOfAccounts++;
     }
 
-    // ------------ Order Methods ------------ //
+    // -------------- Methods -------------- //
 
     // Create a method that will allow a user to deposit money into either the
     // checking or saving, be sure to add to total amount stored:
