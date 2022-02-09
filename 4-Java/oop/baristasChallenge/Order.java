@@ -34,7 +34,7 @@ public class Order {
     // order is ready, return "Your order is ready.", if not, return "Thank you for
     // waiting. Your order will be ready soon."
     public String getStatusMessage() {
-        if (getOrderReady() == true)
+        if (getOrderReady())
             return "Your order is ready.";
         else
             return "Thank you for waiting. Your order will be ready soon.";
@@ -87,6 +87,6 @@ public class Order {
     }
 
     public String getOrderItems() {
-        return this.name;
+        return this.items;
     }
 }
