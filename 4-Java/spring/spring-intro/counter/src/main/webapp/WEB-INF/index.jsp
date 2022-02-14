@@ -17,7 +17,7 @@
 <body class="bg-dark">
 <div class="container mx-auto p-5">
 	<div class="card mx-auto p-5 text-center bg-secondary w-50">
-		<h3 class="mb-5">Welcome User!</h3>
+		<h4 class="mb-5">Welcome User!</h4>
 		<a href="/counter" class="btn btn-warning mb-2 text-white fw-bold">View Counter</a>
 		<a href="/counter/+2" class="btn btn-info mb-2 text-white fw-bold">Add Two</a>
 	</div>

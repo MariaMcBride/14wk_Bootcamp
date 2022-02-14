@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container mx-auto p-5">
-	<h3 class="heading mb-4">Fruit Store</h3>
+	<h4 class="heading mb-4">Fruit Store</h4>
 	<!-- <div class="card mx-auto p-5"> -->
 		<table class="table">
 		  <thead>
