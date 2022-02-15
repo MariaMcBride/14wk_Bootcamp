@@ -24,6 +24,9 @@
 			<p><strong>Language:</strong> ${book.language}</p>
 			<p><strong>Number of Pages:</strong> ${book.numberOfPages}</p>
 		</div>
+		<div class="d-flex m-4 justify-content-center">
+			<a href="/books">Back to Books List</a>		
+		</div>
 	</div>
 </body>
 </html>

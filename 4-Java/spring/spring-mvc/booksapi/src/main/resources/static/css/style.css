@@ -2,4 +2,18 @@
 
 body {
 	background-color: #1e1e1e;
+	color: #6C757D;
+}
+
+a {
+	text-decoration: none;
+}
+
+table {
+	border: 2px solid #6C757D;
+}
+
+thead {
+	background-color: #000;
+	border-bottom: 2px solid #6C757D;
 }

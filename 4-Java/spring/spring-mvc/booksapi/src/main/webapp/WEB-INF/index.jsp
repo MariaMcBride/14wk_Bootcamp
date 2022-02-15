@@ -16,11 +16,10 @@
 <!-- YOUR own local JS -->
 <script type="text/javascript" src="/js/app.js"></script>
 </head>
-<body>
+<body class="text-white">
 	<div class="container mx-auto p-5">
 		<h4 class="heading mb-4">All Books</h4>
-		<!-- <div class="card mx-auto p-5"> -->
-		<table class="table">
+		<table class="table bg-dark border-secondary text-white">
 			<thead>
 				<tr>
 					<th scope="col">ID</th>
@@ -30,17 +29,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="row" items="${books}">
+				<c:forEach var="book" items="${books}">
 					<tr>
-						<td><c:out value="${book.bookId}" /></td>
-						<td><c:out value="${book.title}" /></td>
-						<td><c:out value="${book.description}" /></td>
-						<td><c:out value="${book.pages}" /></td>
+						<td><c:out value="${book.id}" /></td>
+						<td><a href="/books/${book.id}"><c:out value="${book.title}" /></a></td>
+						<td><c:out value="${book.language}" /></td>
+						<td><c:out value="${book.numberOfPages}" /></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<!-- </div> -->
 	</div>
 </body>
 </html>
