@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add New Book</title>
+<title>Edit Book</title>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <!-- YOUR own local CSS -->
@@ -20,9 +20,10 @@
 </head>
 <body>
 	<div class="container mx-auto p-5">
-		<h2 class="text-center mb-4 text-white">Add New Book</h2>
+		<h2 class="text-center mb-4 text-white">Edit Book</h2>
 		<div class="card mx-auto p-5 bg-secondary text-dark">
-			<form:form action="/books/submit" method="POST" modelAttribute="book">
+			<form:form action="/books/${book.id}" method="POST" modelAttribute="book">
+				<input type="hidden" name="_method" value="put">
                 <div class="mb-3">
                     <form:label path="title" for="formInput" class="form-label">Title:</form:label>
                     <form:errors path="title" class="text-danger"/>
@@ -43,7 +44,8 @@
                     <form:errors path="numberOfPages" class="text-danger"/>
                     <form:input type="number" class="form-control" id="formInput" path="numberOfPages" placeholder=""/>
                 </div>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex align-items-center justify-content-end gap-3">
+                	<a href="/books/${book.id}" class="btn btn-warning  text-white fw-bold">Cancel</a>
                     <input type="submit" value="Submit" class="btn btn-primary fw-bold">
                 </div>
             </form:form>

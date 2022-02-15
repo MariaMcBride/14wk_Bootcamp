@@ -20,7 +20,7 @@
 	<div class="container mx-auto p-5">
 		<div class="d-flex align-items-center justify-content-between mb-3">
 			<h4 class="heading">All Books</h4>
-			<a href="/books/submit">Add New Book</a>
+			<a href="/books/new">Add New Book</a>
 		</div>
 		<table class="table bg-dark border-secondary text-white">
 			<thead>

@@ -51,13 +51,13 @@ public class BooksApi {
         @RequestParam(value="pages") Integer numOfPages) {
         Book book = new Book(title, desc, lang, numOfPages);
         book.setId(id);
-		book = bookService.updateBook(book);
+		book = bookService.updateBook(book, id);
         return book;
     }
 	// ------ Delete One Book ------ //
 	@DeleteMapping("/api/books/{id}")
     public void delete(@PathVariable("id") Long id) {
-        bookService.deleteBook(id);
+        bookService.delete(id);
     }
 
 }

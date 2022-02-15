@@ -21,3 +21,8 @@ thead {
 label {
 	font-weight: bold;
 }
+
+.delete-link {
+	border: none;
+	background-color: transparent;
+}

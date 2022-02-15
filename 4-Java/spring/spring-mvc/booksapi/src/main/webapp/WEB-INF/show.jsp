@@ -22,7 +22,16 @@
 			<h3 class="mb-4">${book.title}</h3>
 			<p><strong>Description:</strong> ${book.description}</p>
 			<p><strong>Language:</strong> ${book.language}</p>
+			<span class="d-flex align-items-center justify-content-between">
 			<p><strong>Number of Pages:</strong> ${book.numberOfPages}</p>
+			<span class="d-flex align-items-center btn-group">
+			<a href="/books/${book.id}/edit" class="link-warning">Edit</a> 
+			<form action="/books/${book.id}" method="post">
+			    <input type="hidden" name="_method" value="delete">
+			    <input type="submit" value="Delete" class="link-danger delete-link">
+			</form>
+			</span>
+			</span>
 		</div>
 		<div class="d-flex m-4 justify-content-center">
 			<a href="/books">Back to Books List</a>		
