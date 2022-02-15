@@ -17,3 +17,7 @@ thead {
 	background-color: #000;
 	border-bottom: 2px solid #6C757D;
 }
+
+label {
+	font-weight: bold;
+}
