@@ -28,14 +28,14 @@
                   <th scope="col">Expense</th>
                   <th scope="col">Vendor</th>
                   <th scope="col">Amount</th>
-                  <th scope="col">Actions</th>
+                  <th scope="col" class="text-center">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <c:forEach var="expense" items="${expenses}">
                   <tr>
                     <td>
-                      <a href="/expenses/${id}">
+                      <a href="/expenses/${expense.id}">
                         <c:out value="${expense.name}" />
                       </a>
                     </td>
@@ -46,8 +46,12 @@
                       $
                       <c:out value="${expense.amount}" />
                     </td>
-                    <td>
+                    <td class="d-flex align-items-center justify-content-evenly">
                       <a href="/expenses/edit/${expense.id}" class="link-warning">Edit</a>
+                      <form action="/expenses/${expense.id}" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="submit" value="Delete" class="btn btn-sm btn-danger fw-bold">
+                      </form>
                     </td>
                   </tr>
                 </c:forEach>
