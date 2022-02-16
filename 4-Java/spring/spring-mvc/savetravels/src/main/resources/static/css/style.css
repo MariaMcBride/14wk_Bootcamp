@@ -1,0 +1,18 @@
+.container {
+  max-width: 60%;
+}
+
+h1,
+h3 {
+  color: #085394;
+}
+
+a {
+  text-decoration: none;
+}
+
+.submit-btn {
+  background-color: #085394;
+  color: #fff;
+  font-weight: bold;
+}
