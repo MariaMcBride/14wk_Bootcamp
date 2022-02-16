@@ -21,23 +21,17 @@
 
         <body>
           <div class="container mx-auto p-5">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-              <h1 class="heading">Save Travels</h1>
-            </div>
+            <h1 class="heading">Save Travels</h1>
             <table class="table table-striped mb-5">
               <thead>
                 <tr>
                   <th scope="col">Expense</th>
                   <th scope="col">Vendor</th>
                   <th scope="col">Amount</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
                 <c:forEach var="expense" items="${expenses}">
                   <tr>
                     <td>
@@ -51,6 +45,9 @@
                     <td>
                       $
                       <c:out value="${expense.amount}" />
+                    </td>
+                    <td>
+                      <a href="/expenses/edit/${expense.id}" class="link-warning">Edit</a>
                     </td>
                   </tr>
                 </c:forEach>

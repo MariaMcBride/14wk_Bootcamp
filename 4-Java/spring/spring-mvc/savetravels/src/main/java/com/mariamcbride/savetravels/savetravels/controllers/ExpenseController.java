@@ -55,7 +55,11 @@ public class ExpenseController {
     }
 
     // ------------------- Update One ------------------ //
-    @GetMapping("/expenses/{id}/edit")
+    // Create the edit.jsp file
+    // Add error JSTL tag and hidden input with put value in edit file
+    // Create update routes (the render and the submit)
+
+    @GetMapping("/expenses/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
         Expense expense = expenseService.findExpense(id);
         model.addAttribute("expense", expense);
@@ -70,7 +74,6 @@ public class ExpenseController {
         if (result.hasErrors()) {
             return "edit.jsp";
         } else {
-            System.out.println();
             expenseService.updateExpense(expense, id);
             return "redirect:/expenses";
         }
