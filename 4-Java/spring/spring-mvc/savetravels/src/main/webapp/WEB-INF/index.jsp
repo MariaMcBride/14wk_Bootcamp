@@ -44,7 +44,7 @@
                     </td>
                     <td>
                       $
-                      <c:out value="${expense.amount}" />
+                      <c:out value="${String.format('%.2f', expense.amount)}" />
                     </td>
                     <td class="d-flex align-items-center justify-content-evenly">
                       <a href="/expenses/edit/${expense.id}" class="link-warning">Edit</a>

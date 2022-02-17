@@ -54,7 +54,7 @@
                 <strong>Amount Spent:</strong>
               </div>
               <div class="col">
-                <c:out value="${expense.amount}" />
+                <c:out value="${String.format('%.2f', expense.amount)}" />
               </div>
             </div>
           </div>
