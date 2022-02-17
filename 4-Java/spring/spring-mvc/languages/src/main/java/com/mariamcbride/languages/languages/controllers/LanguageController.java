@@ -71,6 +71,8 @@ public class LanguageController {
             @PathVariable("id") Long id,
             @Valid @ModelAttribute("language") Language language, BindingResult result) {
         if (result.hasErrors()) {
+            Language language1 = languageService.findLanguage(id);
+            language.setName(language1.getName());
             return "edit.jsp";
         } else {
             languageService.updateLanguage(language, id);

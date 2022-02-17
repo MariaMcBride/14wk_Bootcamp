@@ -72,6 +72,8 @@ public class ExpenseController {
             @PathVariable("id") Long id,
             @Valid @ModelAttribute("expense") Expense expense, BindingResult result) {
         if (result.hasErrors()) {
+            Expense expense1 = expenseService.findExpense(id);
+            expense.setName(expense1.getName());
             return "edit.jsp";
         } else {
             expenseService.updateExpense(expense, id);

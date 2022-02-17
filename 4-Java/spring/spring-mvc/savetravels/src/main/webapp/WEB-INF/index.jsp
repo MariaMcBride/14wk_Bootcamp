@@ -75,7 +75,7 @@
                   <div class="mb-3">
                     <form:label path="amount" for="formInput" class="form-label">Amount:
                     </form:label>
-                    <form:input type="number" class="form-control" id="formInput" path="amount" placeholder="" />
+                    <form:input type="double" class="form-control" id="formInput" path="amount" placeholder="" />
                     <form:errors path="amount" class="text-danger" />
                   </div>
                   <div class="mb-3">
