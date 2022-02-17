@@ -1,0 +1,29 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+
+body {
+  font-family: "Ubuntu Mono", monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card {
+  background-color: #cecccd;
+}
+
+.form-card {
+  max-width: 60%;
+}
+
+tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.445) !important;
+}
+
+thead,
+.header-row tr {
+  background-color: lightblue;
+  border-top: 2px solid rgba(173, 216, 230, 0.801);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.911) !important;
+}
