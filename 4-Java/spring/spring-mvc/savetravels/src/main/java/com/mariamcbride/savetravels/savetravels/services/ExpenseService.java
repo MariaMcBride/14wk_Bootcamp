@@ -38,15 +38,10 @@ public class ExpenseService {
     }
 
     // ------------------- Update One ------------------ //
-    public Expense updateExpense(Expense expense, Long id) {
-        Optional<Expense> optionalExpense = expenseRepository.findById(id);
+    public Expense updateExpense(Expense expense) {
+        Optional<Expense> optionalExpense = expenseRepository.findById(expense.getId());
         if (optionalExpense.isPresent()) {
-            Expense expense1 = optionalExpense.get();
-            expense1.setName(expense.getName());
-            expense1.setVendor(expense.getVendor());
-            expense1.setAmount(expense.getAmount());
-            expense1.setDescription(expense.getDescription());
-            return expenseRepository.save(expense1);
+            return expenseRepository.save(expense);
         } else {
             return null;
         }

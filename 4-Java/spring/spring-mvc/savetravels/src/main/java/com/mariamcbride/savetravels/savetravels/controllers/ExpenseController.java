@@ -37,8 +37,11 @@ public class ExpenseController {
     @PostMapping("/expenses/submit")
     public String create(
             @Valid @ModelAttribute("expense") Expense expense,
-            BindingResult result) {
+            BindingResult result,
+            Model model) {
         if (result.hasErrors()) {
+            List<Expense> expenses = expenseService.allExpenses();
+            model.addAttribute("expenses", expenses);
             return "index.jsp";
         } else {
             expenseService.createExpense(expense);
@@ -69,14 +72,11 @@ public class ExpenseController {
     // Submit updates
     @PutMapping("/expenses/{id}")
     public String update(
-            @PathVariable("id") Long id,
             @Valid @ModelAttribute("expense") Expense expense, BindingResult result) {
         if (result.hasErrors()) {
-            Expense expense1 = expenseService.findExpense(id);
-            expense.setName(expense1.getName());
             return "edit.jsp";
         } else {
-            expenseService.updateExpense(expense, id);
+            expenseService.updateExpense(expense);
             return "redirect:/expenses";
         }
     }

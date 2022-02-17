@@ -68,14 +68,14 @@ public class LanguageController {
     // Submit updates
     @PutMapping("/languages/{id}")
     public String update(
-            @PathVariable("id") Long id,
             @Valid @ModelAttribute("language") Language language, BindingResult result) {
         if (result.hasErrors()) {
-            Language language1 = languageService.findLanguage(id);
+            // Keeps the name from disappearing when you submit an empty input field
+            Language language1 = languageService.findLanguage(language.getId());
             language.setName(language1.getName());
             return "edit.jsp";
         } else {
-            languageService.updateLanguage(language, id);
+            languageService.updateLanguage(language);
             return "redirect:/languages";
         }
     }

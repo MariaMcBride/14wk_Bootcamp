@@ -38,13 +38,9 @@ public class LanguageService {
     }
 
     // ------------------- Update One ------------------ //
-    public Language updateLanguage(Language language, Long id) {
-        Optional<Language> optionalLanguage = languageRepository.findById(id);
+    public Language updateLanguage(Language language) {
+        Optional<Language> optionalLanguage = languageRepository.findById(language.getId());
         if (optionalLanguage.isPresent()) {
-            // Language language1 = optionalLanguage.get();
-            // language1.setName(language.getName());
-            // language1.setCreator(language.getCreator());
-            // language1.setVersion(language.getVersion());
             return languageRepository.save(language);
         } else {
             return null;
