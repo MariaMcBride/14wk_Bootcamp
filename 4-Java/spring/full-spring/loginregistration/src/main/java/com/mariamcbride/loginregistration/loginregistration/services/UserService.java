@@ -1,5 +1,6 @@
 package com.mariamcbride.loginregistration.loginregistration.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.mariamcbride.loginregistration.loginregistration.models.LoginUser;
@@ -19,6 +20,7 @@ public class UserService {
 
     // TO-DO: Write register and login methods!
 
+    // ------------------ Register ----------------- //
     // This method will be called from the controller
     // whenever a user submits a registration form.
     // TO-DO: Additional validations!
@@ -43,6 +45,7 @@ public class UserService {
         }
     }
 
+    // ------------------- Login ------------------- //
     // This method will be called from the controller
     // whenever a user submits a login form.
     // TO-DO: Additional validations!
@@ -71,4 +74,19 @@ public class UserService {
             return user;
         }
     }
+
+    // ------------------ Retrieve All ----------------- //
+    public List<User> allUsers() {
+        return userRepository.findAll();
+    }
+
+    // ------------------ Retrieve One ----------------- //
+    public User findUser(Long userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if (optionalUser.isPresent()) {
+            return optionalUser.get();
+        } else
+            return null;
+    }
+
 }

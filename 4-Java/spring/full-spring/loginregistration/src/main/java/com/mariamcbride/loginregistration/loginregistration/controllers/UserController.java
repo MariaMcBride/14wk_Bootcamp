@@ -26,7 +26,7 @@ public class UserController {
     @GetMapping("/")
     public String index(HttpSession session, Model model) {
         if (session.getAttribute("user_id") != null) {
-            return "redirect:/home";
+            return "redirect:/books";
         }
         model.addAttribute("newUser", new User());
         model.addAttribute("newLogin", new LoginUser());
@@ -50,7 +50,7 @@ public class UserController {
         // TO-DO Later: Store their ID from the DB in session,
         // in other words, log them in.
         session.setAttribute("user_id", newUser.getId());
-        return "redirect:/home";
+        return "redirect:/books";
     }
 
     // -------------------- Login -------------------- //
@@ -67,23 +67,13 @@ public class UserController {
         // TO-DO Later: Store their ID from the DB in session,
         // in other words, log them in.
         session.setAttribute("user_id", user.getId());
-        return "redirect:/home";
-    }
-
-    // ------------------ Dashboard ------------------ //
-    @GetMapping("/home")
-    public String home(HttpSession session) {
-        if (session.getAttribute("user_id") == null) {
-            return "redirect:/";
-        } else {
-            return "dashboard.jsp";
-        }
+        return "redirect:/books";
     }
 
     // -------------------- Logout ------------------- //
     @PostMapping("/logout")
     public String logout(HttpSession session) {
-        session.removeAttribute("user_id");
+        session.invalidate();
         return "redirect:/";
     }
 

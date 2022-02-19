@@ -24,13 +24,48 @@
         <!-- Enter body here -->
         <div class="container p-5">
           <div class="card mx-auto p-4 rounded-0">
-            <h1 class="mb-4">Welcome
-              <c:out value="${user.userName}" />!
-            </h1>
-            <p>This is your dashboard. Nothing to see here yet.</p>
-            <form action="/logout" method="POST">
-              <button class="border-0 bg-transparent text-primary">Logout</button>
-            </form>
+            <div class="flex mb-3">
+              <div>
+                <h1 class="mb-3">Welcome,
+                  <c:out value="${loggedUser.name}" />!
+                </h1>
+                <p class="mb-4">Books from everyone's shelves:</p>
+              </div>
+              <div class="text-end">
+                <form action="/logout" method="POST">
+                  <button class="border-0 bg-transparent text-primary mb-3">Logout</button>
+                </form>
+                <a href="/books/new" class="mb-4">+ Add a book to my shelf</a>
+              </div>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Author</th>
+                  <th scope="col">Posted By</th>
+                </tr>
+              </thead>
+              <tbody>
+                <c:forEach var="book" items="${books}">
+                  <tr>
+                    <td>
+                      <c:out value="${book.id}" />
+                    </td>
+                    <td><a href="/books/${book.id}">
+                        <c:out value="${book.title}" />
+                      </a></td>
+                    <td>
+                      <c:out value="${book.author}" />
+                    </td>
+                    <td>
+                      <c:out value="${book.user.name}" />
+                    </td>
+                  </tr>
+                </c:forEach>
+              </tbody>
+            </table>
           </div>
         </div>
 

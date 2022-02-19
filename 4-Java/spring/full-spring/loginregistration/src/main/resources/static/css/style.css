@@ -9,6 +9,12 @@ a {
   text-decoration: none;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .card {
   background-color: #cecccd;
 }
@@ -16,6 +22,21 @@ a {
 .register,
 .login {
   max-width: 250px;
+}
+
+.reg-btn,
+.log-btn {
+  background-color: #9900ff;
+  color: #fff;
+}
+
+.log-reg,
+.text-title {
+  color: #9900ff;
+}
+
+.text-author {
+  color: #59c063;
 }
 
 tr {

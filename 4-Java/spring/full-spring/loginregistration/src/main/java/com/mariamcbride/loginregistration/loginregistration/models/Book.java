@@ -1,7 +1,6 @@
 package com.mariamcbride.loginregistration.loginregistration.models;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,41 +8,33 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "books")
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // ------------------- Validations ------------------ //
-    @NotEmpty(message = "Name is required!")
-    @Size(min = 3, max = 30, message = "Name must be between 3 and 30 characters")
-    private String name;
-
-    @NotEmpty(message = "Email is required!")
-    @Email(message = "Please enter a valid email!")
-    private String email;
-
-    @NotEmpty(message = "Password is required!")
-    @Size(min = 8, max = 128, message = "Password must be between 8 and 128 characters")
-    private String password;
-
-    @Transient // used only for confirmation and won't be stored in the database
-    @NotEmpty(message = "Confirm Password is required!")
-    @Size(min = 8, max = 128, message = "Confirm Password must be between 8 and 128 characters")
-    private String confirm;
+    @NotEmpty(message = "Title cannot be blank.")
+    @Size(min = 2, max = 50, message = "Title must be at least 2 characters.")
+    private String title;
+    @NotEmpty(message = "Author cannot be blank.")
+    @Size(min = 2, max = 50, message = "Author must be at least 2 characters.")
+    private String author;
+    @NotEmpty(message = "Thoughts cannot be blank.")
+    @Size(min = 2, max = 1000, message = "Thoughts must be at least 2 characters and cannot exceed 1000 characters.")
+    private String thoughts;
 
     // -------------- Created at/Updated at ------------- //
     @Column(updatable = false)
@@ -52,23 +43,40 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
-    @PrePersist // runs the method right before the object is created
+    @PrePersist
     protected void onCreate() {
         this.createdAt = new Date();
     }
 
-    @PreUpdate // runs a method when the object is modified
+    @PreUpdate
     protected void onUpdate() {
         this.updatedAt = new Date();
     }
 
     // ------------------ Relationships ----------------- //
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Book> books;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     // ------------------ Constructors ----------------- //
-    public User() {
+    public Book() {
     }
+
+    // public Book(Long id,
+    // String title,
+    // String author,
+    // String thoughts,
+    // Date createdAt,
+    // Date updatedAt,
+    // User user) {
+    // this.id = id;
+    // this.title = title;
+    // this.author = author;
+    // this.thoughts = thoughts;
+    // this.createdAt = createdAt;
+    // this.updatedAt = updatedAt;
+    // this.user = user;
+    // }
 
     // --------------- Getters & Setters --------------- //
     public Long getId() {
@@ -79,36 +87,28 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public String getPassword() {
-        return password;
+    public String getThoughts() {
+        return thoughts;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getConfirm() {
-        return confirm;
-    }
-
-    public void setConfirm(String confirm) {
-        this.confirm = confirm;
+    public void setThoughts(String thoughts) {
+        this.thoughts = thoughts;
     }
 
     public Date getCreatedAt() {
@@ -127,4 +127,11 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

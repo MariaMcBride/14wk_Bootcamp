@@ -22,21 +22,21 @@
         <body>
           <div class="container p-5">
             <div class="card mx-auto p-4 rounded-0">
-              <h1 class="mb-4">Welcome!</h1>
-              <p>Join our growing community.</p>
+              <h1 class="mb-4 log-reg">Book Club</h1>
+              <p>A place for friends to share thoughts on books.</p>
               <div class="d-flex align-items-start justify-content-around">
                 <div class="mb-3 register">
                   <h2>Register</h2>
                   <form:form action="/register" method="POST" modelAttribute="newUser">
                     <div class="mb-3 row">
-                      <form:label path="userName" for="formInput" class="col-sm-6 col-form-label">User Name</form:label>
-                      <form:errors path="userName" class="text-danger" />
-                      <form:input type="text" class="form-control" id="formInput" path="userName" />
+                      <form:label path="name" for="formInput" class="col-sm-6 col-form-label">Name</form:label>
+                      <form:errors path="name" class="text-danger" />
+                      <form:input type="text" class="form-control" id="formInput" path="name" />
                     </div>
                     <div class="mb-3 row">
                       <form:label path="email" for="formInput" class="col-sm-6 col-form-label">Email</form:label>
                       <form:errors path="email" class="text-danger" />
-                      <form:input type="text" class="form-control" id="formInput" path="email" />
+                      <form:input type="email" class="form-control" id="formInput" path="email" />
                     </div>
                     <div class="mb-3 row">
                       <form:label path="password" for="inputPassword" class="col-sm-6 col-form-label">Password
@@ -50,7 +50,7 @@
                       <form:errors path="confirm" class="text-danger" />
                       <form:input type="password" class="form-control" id="inputPassword" path="confirm" />
                     </div>
-                    <input type="submit" value="Submit" class="btn btn-success mb-5">
+                    <input type="submit" value="Submit" class="btn reg-btn mb-5">
                   </form:form>
                 </div>
                 <div class="mb-3 login">
@@ -59,7 +59,7 @@
                     <div class="mb-3 row">
                       <form:label path="email" for="formInput" class="col-sm-4 col-form-label">Email</form:label>
                       <form:errors path="email" class="text-danger" />
-                      <form:input type="text" class="form-control" id="formInput" path="email" />
+                      <form:input type="email" class="form-control" id="formInput" path="email" />
                     </div>
                     <div class="mb-3 row">
                       <form:label path="password" for="inputPassword" class="col-sm-4 col-form-label">Password
@@ -67,7 +67,7 @@
                       <form:errors path="password" class="text-danger" />
                       <form:input type="password" class="form-control" id="inputPassword" path="password" />
                     </div>
-                    <input type="submit" value="Submit" class="btn btn-primary mb-5">
+                    <input type="submit" value="Submit" class="btn log-btn mb-5">
                   </form:form>
                 </div>
               </div>
