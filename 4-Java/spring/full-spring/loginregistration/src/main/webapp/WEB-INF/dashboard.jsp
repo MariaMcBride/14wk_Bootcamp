@@ -8,7 +8,9 @@
 
       <head>
         <meta charset="UTF-8">
-        <title>Dashboard</title>
+        <title>
+          <c:out value="${loggedUser.name}" />'s Dashboard
+        </title>
         <!-- for Bootstrap CSS -->
         <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
         <!-- YOUR own local CSS -->
@@ -66,6 +68,9 @@
                 </c:forEach>
               </tbody>
             </table>
+            <div class="text-center mt-4">
+              <h4><a href="/bookmarket">Go to Book Broker Dashboard</a></h4>
+            </div>
           </div>
         </div>
 

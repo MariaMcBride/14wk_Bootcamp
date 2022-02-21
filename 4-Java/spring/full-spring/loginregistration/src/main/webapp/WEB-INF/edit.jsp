@@ -25,6 +25,8 @@
               <h2 class="mb-3">Change your Entry</h2>
               <form:form action="/books/${book.id}/edit" method="POST" modelAttribute="book">
                 <input type="hidden" name="_method" value="put">
+                <form:input type="hidden" path="user" />
+                <form:input type="hidden" path="borrower" />
                 <div class="mb-3">
                   <form:label path="title" for="formInput" class="form-label">Title</form:label>
                   <form:errors path="title" class="text-danger" />
@@ -45,9 +47,10 @@
                 <div class="flex">
                   <a href="/books">Back to the shelves</a>
                   <span class="flex gap-3 buttons">
-                    <a href="/books/${book.id}" class="btn btn-secondary">
-                      Cancel
-                    </a>
+                    <form action="/books/${book.id}/delete" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
                     <input type="submit" value="Update" class="btn btn-success">
                   </span>
                 </div>

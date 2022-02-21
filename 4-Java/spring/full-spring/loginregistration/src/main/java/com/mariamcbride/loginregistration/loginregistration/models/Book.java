@@ -54,9 +54,17 @@ public class Book {
     }
 
     // ------------------ Relationships ----------------- //
+    // many books can have one owner
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    // Book Broker Assignment: Add another association for borrowers
+
+    // many books can have one borrower
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "borrower")
+    private User borrower;
 
     // ------------------ Constructors ----------------- //
     public Book() {
@@ -111,6 +119,22 @@ public class Book {
         this.thoughts = thoughts;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getBorrower() {
+        return borrower;
+    }
+
+    public void setBorrower(User borrower) {
+        this.borrower = borrower;
+    }
+
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -125,13 +149,5 @@ public class Book {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

@@ -94,13 +94,18 @@ public class BookController {
             @PathVariable("id") Long id,
             Model model,
             HttpSession session) {
+        // route guard
         // grab user from session for conditional rendering (on edit button)
         Long userId = (Long) session.getAttribute("user_id");
-        User loggedUser = userService.findUser(userId);
-        model.addAttribute("loggedUser", loggedUser);
-        Book book = bookService.findBook(id);
-        model.addAttribute("book", book);
-        return "viewone.jsp";
+        if (userId != null) {
+            User loggedUser = userService.findUser(userId);
+            model.addAttribute("loggedUser", loggedUser);
+            Book book = bookService.findBook(id);
+            model.addAttribute("book", book);
+            return "viewone.jsp";
+        } else {
+            return "redirect:/";
+        }
     }
 
     // ------------------- Update One ------------------ //
@@ -109,10 +114,16 @@ public class BookController {
             @PathVariable("id") Long id,
             Model model,
             HttpSession session) {
-        Book book = bookService.findBook(id);
-        model.addAttribute("book", book);
-        model.addAttribute("users", userService.allUsers());
-        return "edit.jsp";
+        // route guard
+        Long userId = (Long) session.getAttribute("user_id");
+        if (userId != null) {
+            Book book = bookService.findBook(id);
+            model.addAttribute("book", book);
+            model.addAttribute("users", userService.allUsers());
+            return "edit.jsp";
+        } else {
+            return "redirect:/";
+        }
     }
 
     // submit update
@@ -134,10 +145,54 @@ public class BookController {
         }
     }
 
-    // // ------------------- Delete One ------------------ //
-    // @DeleteMapping("/books/{id}/delete")
-    // public String deleteBook(@PathVariable("id") Long id) {
-    // bookService.deleteBook(id);
-    // return "redirect:/books";
-    // }
+    // Book Broker Assignment: Add new dashboard, borrow, return, and delete routes
+
+    // ------------- Library / Retrieve All ------------ //
+    @GetMapping("/bookmarket")
+    public String library(HttpSession session, Model model) {
+        // route guard
+        Long userId = (Long) session.getAttribute("user_id");
+        if (userId != null) {
+            User loggedUser = userService.findUser(userId);
+            List<Book> books = bookService.allBooks();
+            List<Book> borrowedBooks = loggedUser.getBorrowedBooks();
+            model.addAttribute("loggedUser", loggedUser);
+            model.addAttribute("books", books);
+            model.addAttribute("borrowedBooks", borrowedBooks);
+            return "library.jsp";
+        } else {
+            return "redirect:/";
+        }
+    }
+
+    // ------------------- Borrow One ------------------ //
+    @PutMapping("/books/{id}/borrow")
+    public String borrowBook(
+            @PathVariable("id") Long id,
+            HttpSession session) {
+        Long userId = (Long) session.getAttribute("user_id");
+        User borrower = userService.findUser(userId);
+        Book book = bookService.findBook(id);
+        book.setBorrower(borrower);
+        bookService.createBook(book);
+        return "redirect:/bookmarket";
+    }
+
+    // ------------------- Return One ------------------ //
+    @PutMapping("/books/{id}/return")
+    public String returnBook(
+            @PathVariable("id") Long id,
+            HttpSession session) {
+        Book book = bookService.findBook(id);
+        book.setBorrower(null);
+        bookService.createBook(book);
+        return "redirect:/bookmarket";
+    }
+
+    // ------------------- Delete One ------------------ //
+    @DeleteMapping("/books/{id}/delete")
+    public String deleteBook(@PathVariable("id") Long id) {
+        bookService.deleteBook(id);
+        return "redirect:/books";
+    }
 }

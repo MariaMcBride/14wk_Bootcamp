@@ -63,8 +63,15 @@ public class User {
     }
 
     // ------------------ Relationships ----------------- //
+    // one user can own many books
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Book> books;
+
+    // Book Broker Assignment: Add another association for borrowed books
+
+    // one user can have many borrowed books
+    @OneToMany(mappedBy = "borrower", fetch = FetchType.LAZY)
+    private List<Book> borrowedBooks;
 
     // ------------------ Constructors ----------------- //
     public User() {
@@ -109,6 +116,22 @@ public class User {
 
     public void setConfirm(String confirm) {
         this.confirm = confirm;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public List<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    public void setBorrowedBooks(List<Book> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
     }
 
     public Date getCreatedAt() {
