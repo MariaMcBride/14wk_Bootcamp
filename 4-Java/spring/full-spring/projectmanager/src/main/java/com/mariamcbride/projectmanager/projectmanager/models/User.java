@@ -59,16 +59,6 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
-    @PrePersist // runs the method right before the object is created
-    protected void onCreate() {
-        this.createdAt = new Date();
-    }
-
-    @PreUpdate // runs a method when the object is modified
-    protected void onUpdate() {
-        this.updatedAt = new Date();
-    }
-
     // ------------------ Relationships ----------------- //
     // 1:M - one team leader can create many projects
     @OneToMany(mappedBy = "leader", fetch = FetchType.LAZY)
@@ -79,8 +69,23 @@ public class User {
     @JoinTable(name = "projects_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
     private List<Project> projects;
 
+    // Sensei Bonus: 1:M - one member can have many tasks
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    private List<Task> tasks;
+
     // ------------------ Constructors ----------------- //
     public User() {
+    }
+
+    // --------------------- Method -------------------- //
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = new Date();
     }
 
     // --------------- Getters & Setters --------------- //
@@ -162,6 +167,14 @@ public class User {
 
     public void setProjects(List<Project> projects) {
         this.projects = projects;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
 }

@@ -39,6 +39,7 @@
               <strong>Due Date:</strong>
               <c:out value="${project.dueDate}" />
             </p>
+            <p><a href="/projects/${project.id}/tasks">See tasks!</a></p>
           </div>
           <div class="d-flex justify-content-end gap-3">
             <c:if test="${project.leader.id == user_id}">

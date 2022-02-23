@@ -6,8 +6,10 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.mariamcbride.projectmanager.projectmanager.models.Project;
+import com.mariamcbride.projectmanager.projectmanager.models.Task;
 import com.mariamcbride.projectmanager.projectmanager.models.User;
 import com.mariamcbride.projectmanager.projectmanager.services.ProjectService;
+import com.mariamcbride.projectmanager.projectmanager.services.TaskService;
 import com.mariamcbride.projectmanager.projectmanager.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class ProjectController {
 
     @Autowired
     private ProjectService projectService;
+
+    @Autowired
+    private TaskService taskService;
 
     // ------------ Dashboard / Retrieve All ----------- //
     @GetMapping("/dashboard")
@@ -172,6 +177,47 @@ public class ProjectController {
         project.getMembers().remove(member);
         projectService.updateProject(project);
         return "redirect:/dashboard";
+    }
+
+    // ------------------- View Tasks ------------------ //
+    @GetMapping("/projects/{id}/tasks")
+    public String createTask(
+            @PathVariable("id") Long id, // grab the project id
+            @ModelAttribute("task") Task task,
+            Model model,
+            HttpSession session) {
+        Long userId = (Long) session.getAttribute("user_id");
+        User member = userService.findUser(userId);
+        if (session.getAttribute("user_id") != null) {
+            Project project = projectService.findProject(id);
+            model.addAttribute("member", member);
+            model.addAttribute("project", project);
+            return "tasks.jsp";
+        } else {
+            return "redirect:/";
+        }
+    }
+
+    // submit new task
+    @PostMapping("/projects/{projectId}/tasks")
+    public String submitTask(
+            @Valid @ModelAttribute("task") Task task,
+            BindingResult result,
+            @PathVariable("projectId") Long projectId,
+            Model model,
+            HttpSession session) {
+        Long userId = (Long) session.getAttribute("user_id");
+        User member = userService.findUser(userId);
+        Project project = projectService.findProject(projectId);
+        if (result.hasErrors()) {
+            model.addAttribute("member", member);
+            System.out.println(userId);
+            model.addAttribute("project", project);
+            return "tasks.jsp";
+        } else {
+            taskService.createTask(task);
+            return "redirect:/projects/{projectId}/tasks";
+        }
     }
 
     // ------------------- Delete One ------------------ //
