@@ -25,9 +25,9 @@ class DLList {
       this.head = node;
       this.tail = node;
     } else {
-      this.head.prev = node;
-      node.next = this.head;
-      this.head = node;
+      this.head.prev = node; // head's previous points to new node
+      node.next = this.head; // new node's next pointer points to head
+      this.head = node; // change the head to the new node
     }
     return this;
   }
